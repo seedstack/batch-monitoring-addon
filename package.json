@@ -1,0 +1,24 @@
+{
+  "name": "seedstack-i18n-function",
+  "version": "2.0.0-M1",
+  "description": "SeedStack i18n reusable function",
+  "license": "MPL 2.0",
+  "contributors": [
+    {
+      "name": "Aymen ABBES",
+      "email": "aymen.abbes@ext.mpsa.com"
+    },
+    {
+      "name": "Adrien LAUER",
+      "email": "adrien.lauer@mpsa.com"
+    }
+  ],
+  "devDependencies": {
+    "grunt": "~0.4",
+    "grunt-contrib-clean": "~0.6",
+    "grunt-contrib-jshint": "~0.10",
+    "grunt-contrib-concat": "~0.5.0",
+    "grunt-contrib-uglify": "~0.6.0",
+    "grunt-bower-task": "~0.4"
+  }
+}

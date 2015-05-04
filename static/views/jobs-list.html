@@ -1,0 +1,97 @@
+<!--
+
+    Copyright (c) 2013-2015 by The SeedStack authors. All rights reserved.
+
+    This file is part of SeedStack, An enterprise-oriented full development stack.
+
+    This Source Code Form is subject to the terms of the Mozilla Public
+    License, v. 2.0. If a copy of the MPL was not distributed with this
+    file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+-->
+<div>
+    <div  data-ng-show="!(authorization.hasPermission('seed-w20', ['seed', 'monitoring', 'batch', 'read']) && authentication.isAuthentifiable())" >
+            <!-- data-ng-show="!(authorization.hasPermission('seed-w20', ['seed', 'monitoring', 'batch', 'read']) && authentication.isAuthentifiable())" -->
+        <div class="alert alert-warning alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <strong>{{ "application.view.batch.warning" | localize }}</strong> {{ "application.view.batch.accessdenied" | localize }}
+        </div>
+    </div>
+
+    <div class="batch" data-on-resize data-do="resizeGrids()"  data-ng-show="authorization.hasPermission('seed-w20', ['seed', 'monitoring', 'batch', 'read']) && authentication.isAuthentifiable()">
+        <!-- data-ng-show="authorization.hasPermission('seed-w20', ['seed', 'monitoring', 'batch', 'read']) && authentication.isAuthentifiable()"-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="seed-batch-header">
+                    <i class="fa fa-dashboard"></i> {{ "application.view.batch.maintitle" | localize }}
+                </div>
+                <div data-breadcrumb data-base-path="batch/jobs-list"></div>
+                    <button class="btn btn-xs btn-show-hide-menu"
+                            data-ng-click="showMap = !showMap"
+                            data-ng-class="{'btn-default': !showMap, 'btn-success': showMap }">
+                        <i class="fa fa-list-ul"></i> {{ "application.view.batch.batchtree" | localize }}
+                    </button>
+
+                    <button class="btn btn-xs btn-polling"
+                            data-ng-click="polling()"
+                            data-ng-class="{'btn-success': !isPolling, 'btn-danger': isPolling}">
+                        <i class="fa" data-ng-class="{'fa-play': !isPolling, 'fa-stop': isPolling}"></i>
+                        {{ "application.view.batch.update" | localize }} ({{ delta }}s)
+                    </button>
+            </div>
+        </div>
+
+        <div class="row" id="mainWrapper">
+
+            <!-- Map of jobs hierarchy -->
+            <div class="col-md-6 nopadding" id="batch-map" data-ng-if="showMap">
+                <div class="panel panel-default" id="batch-map-panel">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <i class="fa fa-cogs"></i> {{ "application.view.batch.batchmap" | localize }} {{ selectedJob[0].name }}
+                            <span data-expand-item data-item-id="batch-map-panel" data-exec="resizeGrids"></span>
+                        </h4>
+                    </div>
+                    <div class="panel-body keep-padding">
+                        <div style="height: 838px;" data-batch-map data-job="{{ selectedJob[0].name }}" id="batch-map-diagram"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jobs list & pie -->
+            <div class="col-md-6 nopadding">
+                <div class="panel panel-default" id="jobsItem">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <i class="fa fa-cogs"></i> {{ "application.view.batch.jobtabletitle" | localize }}
+                            <span data-expand-item data-item-id="jobsItem" data-exec="resizeGrids"></span>
+                        </h4>
+                    </div>
+                    <div id="jobsNames">
+                        <div class="panel-body">
+                            <div class="gridStyle" data-ng-grid="jobsListOptions"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pie chart (overall progress) -->
+            <div class="col-md-6 nopadding" id="pieItem">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <i class="fa fa-cogs"></i> {{ "application.view.batch.overallprogress" | localize }} {{ selectedJob[0].name }}
+                        </h4>
+                    </div>
+                    <div id="chartOverallProgress">
+                        <div class="panel-body keep-padding">
+                            <div id="pieChart" style="width: 100%; height: 370px"
+                                 data-w20-pie-chart="pieConfig"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+{
+  "name": "seedstack-batch-monitoring-function-web",
+  "devDependencies": {
+    "seedstack-batch-monitoring": "../../.."
+  },
+  "resolutions": {
+    "angular": "1.3.6"
+  }
+}

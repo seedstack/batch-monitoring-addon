@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+
+    Copyright (c) 2013-2015 by The SeedStack authors. All rights reserved.
+
+    This file is part of SeedStack, An enterprise-oriented full development stack.
+
+    This Source Code Form is subject to the terms of the Mozilla Public
+    License, v. 2.0. If a copy of the MPL was not distributed with this
+    file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.seedstack</groupId>
+        <artifactId>parent</artifactId>
+        <version>2.0.0-M2-SNAPSHOT</version>
+    </parent>
+
+    <groupId>org.seedstack.functions.batch-monitoring</groupId>
+    <artifactId>batch-monitoring-function</artifactId>
+    <version>2.0.0-M2-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <inceptionYear>2014</inceptionYear>
+    <properties>
+        <seed.version>2.0.0-M2-SNAPSHOT</seed.version>
+        <seed-spring-extensions.version>2.0.0-M2-SNAPSHOT</seed-spring-extensions.version>
+    </properties>
+
+    <modules>
+        <module>core</module>
+        <module>rest</module>
+        <module>web</module>
+        <module>doc</module>
+        <module>bom</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.seedstack.seed</groupId>
+                <artifactId>seed-bom</artifactId>
+                <version>${seed.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.seedstack.seed</groupId>
+                <artifactId>seed-spring-extensions-bom</artifactId>
+                <version>${seed-spring-extensions.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.seedstack</groupId>
+                <artifactId>spring-bom</artifactId>
+                <version>${seedstack.poms.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.seedstack</groupId>
+                <artifactId>logging-bom</artifactId>
+                <version>${seedstack.poms.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.seedstack</groupId>
+                <artifactId>java-bom</artifactId>
+                <version>${seedstack.poms.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.seedstack</groupId>
+                <artifactId>commons-bom</artifactId>
+                <version>${seedstack.poms.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.seedstack</groupId>
+                <artifactId>integrationtest-bom</artifactId>
+                <version>${seedstack.poms.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.seedstack.seed</groupId>
+            <artifactId>seed-unittest-support</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>

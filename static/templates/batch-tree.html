@@ -1,0 +1,28 @@
+<!--
+
+    Copyright (c) 2013-2015 by The SeedStack authors. All rights reserved.
+
+    This file is part of SeedStack, An enterprise-oriented full development stack.
+
+    This Source Code Form is subject to the terms of the Mozilla Public
+    License, v. 2.0. If a copy of the MPL was not distributed with this
+    file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+-->
+<div class="form-inline" style="margin-top: 0; border-bottom: 1px solid #ddd; background-color: #F5F5F5; padding: 7px">
+    <label class="checkbox-inline">
+        <select id="select-batch" data-ng-model="diagramJob" data-ng-options="job for job in jobNameList"></select>
+    </label>
+    <label class="checkbox-inline">
+        <input type="checkbox" id="inlineCheckbox1" data-ng-model="completed"> {{ "application.view.batch.completed" | localize }}
+    </label>
+    <label class="checkbox-inline">
+        <input type="checkbox" id="inlineCheckbox2" data-ng-model="unknown"> {{ "application.view.batch.unknown" | localize }}
+    </label>
+    <label class="checkbox-inline">
+        <input type="checkbox" id="inlineCheckbox3" data-ng-model="failed"> {{ "application.view.batch.failed" | localize }}
+    </label>
+    <label class="checkbox-inline">
+        <input type="text" id="search-batch" data-ng-model="searchBatch" placeholder="{{ 'application.view.batch.search' | localize }}">
+    </label>
+</div>

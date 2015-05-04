@@ -1,0 +1,165 @@
+<!--
+
+    Copyright (c) 2013-2015 by The SeedStack authors. All rights reserved.
+
+    This file is part of SeedStack, An enterprise-oriented full development stack.
+
+    This Source Code Form is subject to the terms of the Mozilla Public
+    License, v. 2.0. If a copy of the MPL was not distributed with this
+    file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+-->
+<div class="batch" data-on-resize data-do="resizeGrids()">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="seed-batch-header">
+                <i class="fa fa-dashboard"></i> {{ "application.view.batch.maintitle" | localize }}
+            </div>
+            <div data-breadcrumb data-base-path="batch/jobs-list"></div>
+
+            <button class="btn btn-xs btn-show-hide-menu"
+                    data-ng-click="showMap = !showMap"
+                    data-ng-class="{'btn-default': !showMap, 'btn-success': showMap }">
+                <i class="fa fa-list-ul"></i> {{ "application.view.batch.batchtree" | localize }}
+            </button>
+
+            <button class="btn btn-xs btn-polling"
+                    data-ng-click="polling()"
+                    data-ng-class="{'btn-success': !isPolling, 'btn-danger': isPolling}">
+                <i class="fa" data-ng-class="{'fa-play': !isPolling, 'fa-stop': isPolling}"></i>
+                {{ "application.view.batch.update" | localize }} ({{ delta }}s)
+            </button>
+
+        </div>
+    </div>
+
+    <div class="row" id="mainWrapper">
+        <!-- Map of jobs hierarchy -->
+        <div class="col-md-6 nopadding" id="batch-map" data-ng-if="showMap">
+            <div class="panel panel-default" id="batch-map-panel">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <i class="fa fa-cogs"></i> {{ "application.view.batch.batchmap" | localize }} {{ selectedJob }}
+                        <span data-expand-item data-item-id="batch-map-panel" data-exec="resizeGrids"></span>
+                    </h4>
+                </div>
+                <div class="panel-body keep-padding">
+                    <div style="height: 838px;" data-batch-map data-job="{{ selectedJob }}" id="batch-map-diagram"></div>
+                </div>
+            </div>
+        </div>
+        <!-- STEP NAMES  -->
+        <div class="nopadding" data-ng-class="{'col-md-6': showMap, 'col-md-5': !showMap}">
+            <div class="panel panel-default" id="stepsItem">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <i class="fa fa-cogs"></i> {{ "application.view.batch.steps" | localize }}
+                        <span data-expand-item data-item-id="stepsItem" data-exec="resizeGrids"></span>
+                    </h4>
+                </div>
+                <div id="step">
+                    <div class="panel-body">
+                        <div class="gridStyle" data-ng-grid="stepsOptions"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- STEP EXECUTION PROGRESS CHART -->
+        <div class="col-md-7 nopadding" data-ng-class="{'col-md-6': showMap, 'col-md-7': !showMap}">
+            <!-- CHARTS -->
+            <div class="panel panel-default" id="chartMultibarStepsItem">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <i class="fa fa-cogs"></i>
+                        {{ "application.view.batch.stepsduration" | localize }} {{selectedJobExecutionId}}
+                    </h4>
+                </div>
+                <div id="chartStepsProgress">
+                    <div class="panel-body keep-padding">
+                        <div id="discretebar"
+                             data-w20-discrete-bar-chart="discreteBarConfig"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FULL DETAILS / HISTORY  -->
+        <div class="row nopadding">
+            <div class="col-md-12 button-details-history">
+                <h3 style="font-size: 18px; line-height: 22px; margin:0; padding-top: 0; border-bottom: none; color: #000000; float:left; margin-right: 10px; margin-top: 8px"> {{ selectedStep[0].name }} </h3>
+                <div class="col-md-4" style="margin-top: 11px">
+                    <i class="fa fa-calendar"></i> {{ selectedStep[0].startDate }} &nbsp
+                    <i class="fa fa-play"></i> {{ selectedStep[0].startTime }}  &nbsp
+                    <i class="fa fa-stop"></i> {{ selectedStep[0].endTime }}  &nbsp
+                    <i class="fa fa-clock-o"></i> {{ selectedStep[0].duration }}  &nbsp
+                </div>
+                <button class="btn btn-default pull-left" data-ng-click="showFullDetails()">
+                    {{ "application.view.batch.fulldetails" | localize }}
+                </button>
+                <button class="btn btn-default pull-left" data-ng-click="showHistory()">
+                    {{ "application.view.batch.history" | localize }}
+                </button>
+                <div data-show-status-modal></div>
+                <div data-show-history-modal></div>
+            </div>
+        </div>
+
+        <!-- STEP PROGRESS BAR -->
+        <div class="col-md-5 nopadding">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <i class="fa fa-cogs"></i> {{ "application.view.batch.stepprogress" | localize }}
+                        </h4>
+                    </div>
+                    <div id="progress">
+                        <div class="panel-body keep-padding">
+                            <p>{{stepExecutionProgress.estimatedPercentCompleteMessage.defaultMessage}}</p>
+
+                            <div class="alert alert-danger"
+                                 style="border-radius: 0" data-ng-show="selectedStep[0].status === 'FAILED'">
+                                <b> {{ "application.view.batch.failedstep" | localize }} </b>
+                                <button class="btn btn-danger btn-sm pull-right" style="margin-top: -5px;" data-ng-click="showFullDetails()">
+                                    {{ 'application.view.batch.statussteperror' | localize }}
+                                </button>
+                            </div>
+                            <div data-ng-hide="selectedStep[0].status === 'FAILED'"
+                                 class="progress progress-striped active">
+                                <div class="progress-bar progress-bar-success"
+                                     data-role="progressbar"
+                                     data-aria-valuenow="45"
+                                     data-aria-valuemin="0"
+                                     data-aria-valuemax="100"
+                                     data-ng-style="{width : ( (stepExecutionProgress.percentageComplete * 100) + '%' ) }">
+                                    <span class="sr-only">{{ stepExecutionProgress.percentageComplete * 100 }}%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <!-- TILES -->
+        <div class="col-md-7">
+            <div class="col-md-6" data-ng-repeat="announce in announcements">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <i class="fa fa-5x {{ announce.icon }}"></i>
+                            </div>
+                            <div class="col-xs-6 text-right">
+                                <p class="announcement-heading">{{ announce.val }}</p>
+                                <p class="announcement-text">{{ announce.text }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+

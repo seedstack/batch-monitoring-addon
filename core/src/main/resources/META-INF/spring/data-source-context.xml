@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2013-2015 by The SeedStack authors. All rights reserved.
+
+    This file is part of SeedStack, An enterprise-oriented full development stack.
+
+    This Source Code Form is subject to the terms of the Mozilla Public
+    License, v. 2.0. If a copy of the MPL was not distributed with this
+    file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:seed="http://www.seedstack.org/xml-schemas/spring-support"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd 
+       http://www.seedstack.org/xml-schemas/spring-support http://www.seedstack.org/xml-schemas/spring-support/spring-support-1.1.xsd">
+
+    <seed:instance id="application" class="org.seedstack.seed.core.api.Application"/>
+
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName">
+            <seed:configuration key="org.seedstack.batch.monitoring.datasource.driver"/>
+        </property>
+        <property name="url">
+            <seed:configuration key="org.seedstack.batch.monitoring.datasource.url"/>
+        </property>
+        <property name="username">
+            <seed:configuration key="org.seedstack.batch.monitoring.datasource.user"/>
+        </property>
+        <property name="password">
+            <seed:configuration key="org.seedstack.batch.monitoring.datasource.password"/>
+        </property>
+        <property name="maxActive">
+            <seed:configuration key="org.seedstack.batch.monitoring.datasource.pool.size"/>
+        </property>
+    </bean>
+
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+</beans>

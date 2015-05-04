@@ -1,0 +1,76 @@
+{
+    "id": "batch",
+    "name": "Seed base fragment",
+    "version": "1.0.0",
+    "author": "Adrien LAUER",
+    "description": "batch-monitor showcases of W20 functions",
+
+    "modules": {
+        "style": {
+            "path": "[css]!{batch}/style/style.css",
+            "autoload": true
+        },
+        "ngGrid": {
+            "path": "[css]!{batch}/lib/ngGrid/ngGrid.css",
+            "autoload": true
+        },
+        "batch": {
+            "path": "{batch}/modules/batch",
+            "autoload": true,
+             "config": {
+                "seedBatchMonitoringWebRestPrefix": "${seed-rest-path}"
+            }
+
+        },
+        "directives": {
+            "path": "{batch}/modules/directives",
+            "autoload": true
+        }
+    },
+    "w20-ui" : {
+        "modules" : {
+            "combo":{},
+            "notifications":{},
+            "grid": {}
+        }
+    },
+
+       "w20-dataviz": {
+        "modules": {
+            "discretebar": {},
+            "pie": {}
+        }
+    },
+
+   "i18n": {
+        "en": ["{batch}/i18n/messages-en.json"],
+        "fr": ["{batch}/i18n/messages-fr.json"]
+    },
+
+   "routes": {
+       "/jobs-list": {
+           "templateUrl":"{batch}/views/jobs-list.html",
+           "controller":"JobsListController",
+           "security": "hasPermission('seed-w20', ['seed','monitoring','batch','read'])"
+       },
+       "/jobs-list/:jobName": {
+           "templateUrl":"{batch}/views/jobs-instance-list.html",
+           "controller":"JobsInstanceListController",
+            "security": "hasPermission('seed-w20', ['seed','monitoring','batch','read'])",
+            "hidden": true
+       },
+       "/jobs-list/:jobName/:jobExecutionId": {
+           "templateUrl":"{batch}/views/step-details.html",
+           "controller":"StepDetailsController",
+           "security": "hasPermission('seed-w20', ['seed','monitoring','batch','read'])",
+           "hidden": true
+       }
+   },
+
+   "requireConfig" : {
+       "shim" : {
+           "{batch}/lib/ngGrid/ngGrid": ["{w20-core}/libext/angular/angular", "jquery"],
+           "{batch}/lib/d3-layout": ["d3"]
+       }
+   }
+}
