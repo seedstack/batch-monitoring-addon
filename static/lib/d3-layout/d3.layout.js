@@ -7,7 +7,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
-define(['{w20-dataviz}/libext/d3/d3.v3', function(d3) {
+define(['{d3}/d3', function(d3) {
     (function(){d3.layout = {};
 // Implements hierarchical edge bundling using Holten's algorithm. For each
 // input link, a path is computed that travels through the tree, up the parent

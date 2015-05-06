@@ -69,8 +69,8 @@
 
    "requireConfig" : {
        "shim" : {
-           "{batch}/lib/ngGrid/ngGrid": ["{w20-core}/libext/angular/angular", "jquery"],
-           "{batch}/lib/d3-layout": ["d3"]
+           "{batch}/lib/ngGrid/ngGrid": ["{angular}/angular", "jquery"],
+           "{batch}/lib/d3-layout": ["{d3}/d3"]
        }
    }
 }

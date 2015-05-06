@@ -16,7 +16,7 @@ define([
         '[text]!{batch}/templates/showHistory.html',
         '[text]!{batch}/templates/batch-tree.html',
         '{batch}/lib/ngGrid/ngGrid',
-        '{d3}/d3.v3',
+        '{d3}/d3',
         '{w20-ui}/modules/notifications',
         '{w20-dataviz}/modules/charts/discretebar',
         '{w20-dataviz}/modules/charts/pie',
