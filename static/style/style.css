@@ -7,217 +7,86 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
-#batch-map-diagram {
-    background:#f7ffea;
+
+/******** Titles **********/
+
+.seed-batch h4 {
+    font-size: 18px;
 }
 
-#batch-map-diagram .node circle {
-    cursor:pointer;
-    fill:#fff;
-    stroke-width:1.5px;
+/******** Header **********/
+
+.seed-batch .seed-batch-header {
+    font-size: 24px;
 }
 
-#batch-map-diagram .node text {
-    font-size:11px;
+.seed-batch .breadcrumb {
+    background-color: inherit;
 }
 
-#batch-map-diagram path.link {
-    fill:none;
-    stroke:#ccc;
-    stroke-width:1.5px;
+.seed-batch .breadcrumb.batch a {
+    color:#000 !important;
 }
 
-#discretebar {
-    width:100%;
-    height:370px;
+/******** Batch map diagram (dendrogram) ************/
+
+.seed-batch .batch-map-diagram {
+    height: 838px;
+    border: 1px solid #DDDDDD;
 }
 
-#jobExecution .table-responsive {
-    margin-bottom: 0;
+.seed-batch .batch-map-diagram .node circle {
+    cursor: pointer;
+    fill: #fff;
+    stroke-width: 1.5px;
 }
 
-#jobExecutionItem .ngViewport {
-    overflow-x:hidden;
+.seed-batch .batch-map-diagram .node text {
+    font-size: 11px;
 }
 
-#jobExecutionItem,#jobsItem.panel,#pieItem .panel {
-    margin-bottom:0!important;
+.seed-batch .batch-map-diagram path.link {
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 1.5px;
 }
 
-#mainWrapper {
-    font-family:'Open Sans', Verdana, sans-serif!important;
-    padding-left:15px;
+/********* Charts **************/
+
+.seed-batch #discretebar {
+    height:300px;
 }
 
-#mainWrapper .expanded {
-    position:fixed;
-    top:0;
-    right:0;
-    bottom:0;
-    left:0;
-    border:0;
-    overflow:auto;
-    border-radius:0;
-    z-index:1050;
-    margin:0;
+.seed-batch #pieChart {
+    height: 370px
 }
 
-#mainWrapper .ngRow.selected {
-    background-color:#CDE9A7;
+/********* Grid color override ***********/
+
+.seed-batch .ui-grid-row:nth-child(even) .ui-grid-cell {
+    background-color: #ffffff;
 }
 
-#mainWrapper .ngTopPanel {
-    background-color:#fff;
+.seed-batch .ui-grid-row.ui-grid-row-selected > [ui-grid-row] > .ui-grid-cell {
+    background-color: #efeded;
 }
 
-#mainWrapper .panel {
-    -webkit-box-shadow:none;
-    box-shadow:none;
-    border-radius:0;
-}
+/********** Grid ***************/
 
-#mainWrapper .panel-body:not(.keep-padding),#batch-map .panel-body {
-    padding:0;
-}
-
-#mainWrapper .panel-heading {
-    border-radius:0;
-}
-
-#mainWrapper .panel-title {
-    color:#000!important;
-}
-
-#mainWrapper .panel-title a {
-    color:#fff;
-}
-
-#mainWrapper h4 {
-    padding-top:0;
-    color:#000;
-}
-
-.announcement-heading {
-    font-size:25px;
-}
-
-.batch .col-md-12 {
-    padding-right:0;
-}
-
-.batch .row {
-    margin-right:0;
-}
-
-#batch-map-panel {
-    margin-bottom: 0;
-}
-
-.bold {
-    font-weight:700;
-}
-
-.breadcrumb.batch a {
-    color:#000!important;
-    font-size:smaller;
-}
-
-.breadcrumb.batch,#stepsItem,#chartMultibarStepsItem {
-    margin-bottom:0;
-}
-
-.btn-expand {
-    position:absolute;
-    top:8px;
-    right:8px;
-}
-
-.btn-full-width {
+.seed-batch .btn-full-width {
     width:100%;
     border-radius:0!important;
     border-color:transparent!important;
 }
 
-.btn-polling {
-    position:absolute;
-    top:43px;
-    right:22px;
-    z-index:100;
+.seed-batch .bold {
+    font-weight:700;
 }
 
-.btn-show-hide-menu {
-    position:absolute;
-    top:43px;
-    left:20px;
-    z-index:100;
-}
-
-.button-details-history {
-    padding-top:20px;
-    margin-bottom:20px;
-    height:50px;
-}
-
-.button-details-history .btn {
-    margin-top:5px;
-    margin-right:10px;
-}
-
-.circle-legend {
-    fill:#fff;
-    stroke-width:1.5px;
-}
-
-.completed {
+.seed-batch .completed {
     color:#54B496;
 }
 
-.expanded .gridStyle {
-    height:880px;
-}
-
-.failed {
+.seed-batch .failed {
     color:#ee5f5b;
-}
-
-.gridStyle {
-    width:100%;
-    height:400px;
-    float:left;
-}
-
-.hide-show-widget-menu {
-    margin-left:10px;
-}
-
-.ngFooterPanel {
-    background-color:inherit!important;
-}
-
-.ngHeaderContainer {
-    text-align:center;
-    color:#263949;
-}
-
-.nopadding {
-    margin:0!important;
-    padding:0!important;
-}
-
-.red {
-    color:red!important;
-}
-
-#search-batch {
-width: 150px;
-}
-
-.seed-batch-header {
-    background-color:#54B496;
-    color:#fff;
-    padding:8px;
-}
-
-.selectedItems {
-    float:left;
 }

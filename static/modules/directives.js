@@ -12,32 +12,30 @@ define([
         'jquery',
         '{lodash}/lodash',
         '{angular}/angular',
+        '{d3}/d3',
+
         '[text]!{batch}/templates/showStatus.html',
         '[text]!{batch}/templates/showHistory.html',
         '[text]!{batch}/templates/batch-tree.html',
-        '{batch}/lib/ngGrid/ngGrid',
-        '{d3}/d3',
+        '[text]!{batch}/templates/breadcrumb.html',
+
         '{w20-ui}/modules/notifications',
+
         '{w20-dataviz}/modules/charts/discretebar',
         '{w20-dataviz}/modules/charts/pie',
-        '{batch}/lib/d3-layout/d3.layout',
+
         '{batch}/modules/batch'
     ],
-    function(_module, $, _, angular, showStatusTemplate, showHistoryTemplate, batchTreeTemplate, ngGrid, d3) {
+    function(_module, $, _, angular,  d3, showStatusTemplate, showHistoryTemplate, batchTreeTemplate, breadcrumbTemplate) {
         'use strict';
 
-        var module = angular.module('batchDirectives', [ 'ngResource', 'ngGrid' ]);
+        var module = angular.module('batchDirectives', [ 'ngResource' ]);
 
         // Topbar breadcrumb
         module.directive('breadcrumb', ['$location', '$routeParams', function($location, $routeParams) {
             return {
                 restrict: 'A',
-                template: '<ol class="breadcrumb batch" style="padding-left: 80px; border-radius: 0;">' +
-                            '<li></li>'+
-                            '<li><a href="#!/batch/jobs-list">Jobs</a>' +
-                            '<li data-ng-if="jobName"><a href="#!/batch/jobs-list/{{jobName}}">{{ jobName }}</a></li>' +
-                            '<li data-ng-if="jobExecutionId"><a href="#!/batch/jobs-list/{{jobName}}/{{jobExecutionId}}">{{ jobExecutionId }}</a></li>' +
-                          '</ol>',
+                template: breadcrumbTemplate,
                 link: function(scope) {
                     scope.jobName = $routeParams.jobName;
                     scope.jobExecutionId = $routeParams.jobExecutionId;
@@ -87,9 +85,9 @@ define([
                 link: function(scope, iElm, iAttrs) {
 
                     function drawRepresentation(batchData) {
-                        d3.select('#batch-map-diagram svg').remove();
+                        d3.select('.batch-map-diagram svg').remove();
 
-                        var vis = d3.select('#' + iAttrs.id).append('svg:svg')
+                        var vis = d3.select('.' + iAttrs.class).append('svg:svg')
                             .attr('width', w + m[1] + m[3])
                             .attr('height', h + m[0] + m[2])
                             .append('svg:g')

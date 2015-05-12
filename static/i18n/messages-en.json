@@ -1,10 +1,10 @@
 {
     "application.view.batch.jobs-list": "Batch monitoring",
-    "application.view.batch.maintitle":"SEED Batch Monitoring",
+    "application.view.batch.maintitle":"Batch Monitoring",
     "application.view.batch.update": "Update",
     "application.view.batch.jobtabletitle": "Job names registered",
-    "application.view.batch.overallprogress": "Overall progress for job executions of job ",
-    "application.view.batch.jobexecution": "Recent and Current Job Executions for Job",
+    "application.view.batch.overallprogress": "Overall progress for ",
+    "application.view.batch.jobexecution": "Recent executions for job",
     "application.view.batch.steps": "Steps",
     "application.view.batch.stepsduration": " Steps duration (ms) for job execution id =",
     "application.view.batch.fulldetails": "View full details",

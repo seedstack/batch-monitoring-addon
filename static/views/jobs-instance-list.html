@@ -9,77 +9,36 @@
     file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 -->
-<div class="batch" data-on-resize data-do="resizeGrids()">
+<div class="seed-batch container-fluid" data-on-resize data-do="resizeGrids()">
+    <!-- HEADER -->
     <div class="row">
         <div class="col-md-12">
-            <div class="seed-batch-header">
+            <h1 class="seed-batch-header">
                 <i class="fa fa-dashboard"></i> {{ "application.view.batch.maintitle" | localize }}
-            </div>
+            </h1>
             <div data-breadcrumb data-base-path="batch/jobs-list"></div>
-
-            <button class="btn btn-xs btn-show-hide-menu"
-                    data-ng-click="showMap = !showMap"
-                    data-ng-class="{'btn-default': !showMap, 'btn-success': showMap }">
-                <i class="fa fa-list-ul"></i> {{ "application.view.batch.batchtree" | localize }}
-            </button>
-
-            <button class="btn btn-xs btn-polling"
-                    data-ng-click="polling()"
-                    data-ng-class="{'btn-success': !isPolling, 'btn-danger': isPolling}">
-                <i class="fa" data-ng-class="{'fa-play': !isPolling, 'fa-stop': isPolling}"></i>
-                {{ "application.view.batch.update" | localize }} ({{ delta }}s)
-            </button>
-
         </div>
     </div>
-    <div class="row" id="mainWrapper">
-        <!-- Map of jobs hierarchy -->
-        <div class="col-md-6 nopadding" id="batch-map" data-ng-if="showMap">
-            <div class="panel panel-default" id="batch-map-panel">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <i class="fa fa-cogs"></i> {{ "application.view.batch.batchmap" | localize }} {{ selectedJob }}
-                        <span data-expand-item data-item-id="batch-map-panel" data-exec="resizeGrids"></span>
-                    </h4>
-                </div>
-                <div class="panel-body keep-padding">
-                    <div style="height: 808px;" data-batch-map data-job="{{ selectedJob }}" id="batch-map-diagram"></div>
-                </div>
+    <div class="row">
+        <!-- MAPS OF JOBS -->
+        <div class="col-md-6" id="batch-map" data-ng-if="showMap">
+            <h4>{{ "application.view.batch.batchmap" | localize }} <strong>{{ selectedJob }}</strong></h4>
+            <div>
+                <div data-batch-map data-job="{{ selectedJob }}" class="batch-map-diagram"></div>
             </div>
         </div>
         <!-- RECENT AND CURRENT JOB EXECUTION -->
-        <div class="nopadding" data-ng-class="{'col-md-6': showMap, 'col-md-12': !showMap}">
-            <div class="panel panel-default" id="jobExecutionItem">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <i class="fa fa-cogs"></i> {{ "application.view.batch.jobexecution" | localize }} = {{selectedJob}}
-                        <span data-expand-item data-item-id="jobExecutionItem" data-exec="resizeGrids"></span>
-                    </h4>
-                </div>
-                <div id="jobExecution">
-                    <div class="panel-body">
-                        <div class="table-responsive">
-                            <div class="gridStyle" data-ng-grid="jobExecutionOptions"></div>
-                        </div>
-                    </div>
-                </div>
+        <div data-ng-class="{'col-md-6': showMap, 'col-md-12': !showMap}">
+            <div>
+                <h4>{{ "application.view.batch.jobexecution" | localize }} <strong>{{selectedJob}}</strong></h4>
+                <div data-ui-grid="jobExecutionOptions" data-ui-grid-selection data-ui-grid-pagination data-ui-grid-auto-resize></div>
             </div>
         </div>
         <!-- JOB EXECUTION CHART -->
-        <div class="nopadding" data-ng-class="{'col-md-6': showMap, 'col-md-12': !showMap}">
-            <div class="panel panel-default" id="discretebarChartPanel">
-                <div class="panel-heading">
-                    <h4 class="panel-title ng-binding">
-                        <i class="fa fa-cogs"></i> {{ "application.view.batch.jobinstancechart" | localize }}
-                        <span data-expand-item data-item-id="discretebarChartPanel" data-exec="resizeGrids"></span>
-                    </h4>
-                </div>
-                <div class="panel-body">
-                    <div id="discretebar"
-                         data-w20-discrete-bar-chart="discreteBarJobInstanceConfig"></div>
-                </div>
+        <div data-ng-class="{'col-md-6': showMap, 'col-md-12': !showMap}">
+                <h4>{{ "application.view.batch.jobinstancechart" | localize }}</h4>
+                <div id="discretebar" data-w20-discrete-bar-chart="discreteBarJobInstanceConfig"></div>
             </div>
-
         </div>
     </div>
 </div>
