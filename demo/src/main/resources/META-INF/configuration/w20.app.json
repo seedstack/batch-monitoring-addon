@@ -1,0 +1,10 @@
+{
+  "w20-core": {
+    "modules": {
+      "culture": {},
+      "security": {
+        "autoLogin": true
+      }
+    }
+  }
+}

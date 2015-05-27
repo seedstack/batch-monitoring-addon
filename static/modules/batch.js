@@ -15,6 +15,7 @@ define([
         '[text]!{batch}/templates/showStatus.html',
         '{d3}/d3',
         '{w20-ui}/modules/notifications',
+        '{w20-ui}/modules/grid',
         '{w20-dataviz}/modules/charts/discretebar',
         '{w20-dataviz}/modules/charts/pie',
         '{angular-resource}/angular-resource',
@@ -177,10 +178,6 @@ define([
                         getJobExecutions($scope.selectedJob[0].name);
                     }
                 }, true);
-
-                $scope.resizeGrids = function() {
-                    $scope.gridApi.core.handleWindowResize();
-                };
 
                 $scope.jobsList = [];
                 $scope.selectedJob = [];
