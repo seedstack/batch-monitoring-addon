@@ -1,0 +1,26 @@
+<ol class="breadcrumb batch">
+    <li>
+        <button class="btn btn-xs btn-show-hide-menu"
+                data-ng-click="showMap = !showMap"
+                data-ng-class="{'btn-default': !showMap, 'btn-success': showMap }">
+            <i class="fa fa-list-ul"></i> {{ "application.view.batch.batchtree" | localize }}
+        </button>
+    </li>
+    <li>
+        <a href="#!/batch/jobs-list">Jobs</a>
+    </li>
+    <li data-ng-if="jobName">
+        <a href="#!/batch/jobs-list/{{jobName}}">{{ jobName }}</a>
+    </li>
+    <li data-ng-if="jobExecutionId">
+        <a href="#!/batch/jobs-list/{{jobName}}/{{jobExecutionId}}">{{ jobExecutionId }}</a>
+    </li>
+    <span style="float: right">
+        <button class="btn btn-xs btn-polling"
+                data-ng-click="polling()"
+                data-ng-class="{'btn-success': !isPolling, 'btn-danger': isPolling}">
+            <i class="fa" data-ng-class="{'fa-play': !isPolling, 'fa-stop': isPolling}"></i>
+            {{ "application.view.batch.update" | localize }} ({{ delta }}s)
+        </button>
+    </span>
+</ol>

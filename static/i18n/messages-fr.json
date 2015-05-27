@@ -1,10 +1,10 @@
 {
     "application.view.batch.jobs-list": "Suivi des batch",
-    "application.view.batch.maintitle":"SEED Suivi des batch",
+    "application.view.batch.maintitle":"Suivi des batch",
     "application.view.batch.update": "Mettre à jour",
     "application.view.batch.jobtabletitle": "Job enregistré",
-    "application.view.batch.overallprogress": "Avancement général des éxécution de jobs pour le job ",
-    "application.view.batch.jobexecution": "Job exécution récents et actuel pour le job",
+    "application.view.batch.overallprogress": "Avancement général du job ",
+    "application.view.batch.jobexecution": "Récentes exécution pour le job",
     "application.view.batch.steps": "Etapes",
     "application.view.batch.stepsduration": " Durée (ms) de l'étape pour l'éxécution de job id =",
     "application.view.batch.fulldetails": "Voir le détail complet",

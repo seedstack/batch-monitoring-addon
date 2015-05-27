@@ -13,21 +13,19 @@ define([
         '{lodash}/lodash',
         '{angular}/angular',
         '[text]!{batch}/templates/showStatus.html',
-        '{batch}/lib/ngGrid/ngGrid',
         '{d3}/d3',
         '{w20-ui}/modules/notifications',
         '{w20-dataviz}/modules/charts/discretebar',
         '{w20-dataviz}/modules/charts/pie',
         '{angular-resource}/angular-resource',
-        '[css]!{batch}/style/style.css',
-        '{batch}/lib/d3-layout/d3.layout'
+        '[css]!{batch}/style/style.css'
     ],
-    function (_module, $, _, angular, showStatusTemplate, ngGrid, d3) {
+    function (_module, $, _, angular, showStatusTemplate, d3) {
         'use strict';
 
         var _config = _module && _module.config() || {},
              POLLING = 5000, //ms
-             module = angular.module('batch', [ 'ngResource', 'ngGrid', 'ngRoute' ]);
+             module = angular.module('batch', [ 'ngResource', 'ngRoute' ]);
 
         module.factory('BatchMonitorService', ['$resource', function ($resource) {
             return {
@@ -49,12 +47,12 @@ define([
         });
 
         module.controller('JobsListController',
-            [ '$scope', 'BatchMonitorService', 'NotificationService', '$location', '$timeout', /*provided by ngGrid*/ '$domUtilityService', 'PollingService', 'AuthorizationService', 'AuthenticationService',
-            function ($scope, batchMonitorService, notifier, $location, $timeout, $domUtilityService, pollingService, authorizationService, authenticationService) {
+            [ '$scope', 'BatchMonitorService', 'NotificationService', '$location', '$timeout', 'PollingService', 'AuthorizationService', 'AuthenticationService',
+            function ($scope, batchMonitorService, notifier, $location, $timeout, pollingService, authorizationService, authenticationService) {
 
                 $scope.authorization = authorizationService;
                 $scope.authentication = authenticationService;
-                
+
                 function getJobs(callback) {
                     batchMonitorService.jobs.get({pageSize: $scope.pagingOptionsJob.pageSize, pageIndex: $scope.pagingOptionsJob.currentPage},
                         function (jobs) {
@@ -65,12 +63,12 @@ define([
                                         //if (!$scope.$$phase) { $scope.$apply(); }
                                         $timeout(function () {
                                             if (!$scope.isPolling) {
-                                                $scope.jobsListOptions.selectRow(0, true);
+                                                $scope.gridApi.selection.selectRow($scope.jobsList[0]);
                                             } else {
                                                 if ($scope.selectedJob.length) {
-                                                    $scope.jobsListOptions.selectRow($scope.selectedJobRowId, true);
+                                                    $scope.gridApi.selection.selectRow($scope.jobsList[0]);
                                                 } else {
-                                                    $scope.jobsListOptions.selectRow(0, true);
+                                                    $scope.gridApi.selection.selectRow($scope.jobsList[0]);
                                                 }
                                             }
                                             // for pie chart data
@@ -165,11 +163,13 @@ define([
                         pieLabelsOutside: false,
                         showValues: true,
                         tooltips: true,
+                        tooltipContent: function(key, y) {
+                            return '<p>' + Math.round(y) + ' ' + key + '</p>';
+                        },
                         labelType: 'percent',
                         showLegend: true
                     };
                 }
-
 
                 // when a job is selected, retrieve update on jobs execution for the pie chart
                 $scope.$watch('selectedJob', function () {
@@ -177,6 +177,10 @@ define([
                         getJobExecutions($scope.selectedJob[0].name);
                     }
                 }, true);
+
+                $scope.resizeGrids = function() {
+                    $scope.gridApi.core.handleWindowResize();
+                };
 
                 $scope.jobsList = [];
                 $scope.selectedJob = [];
@@ -188,40 +192,41 @@ define([
                     currentPage: 1
                 };
 
-                // Update when navigating through pages
-                $scope.$watch('pagingOptionsJob', function (newVal, oldVal) {
-                    if (newVal !== oldVal && newVal.currentPage !== oldVal.currentPage && newVal.currentPage) {
-                        getJobs();
-                    }
-                }, true);
-
                 // Jobs grid config (ngGrid)
                 $scope.jobsListOptions = {
                     data: 'jobsList',
-                    selectedItems: $scope.selectedJob,
+                    enablePaginationControls: true,
+                    paginationPageSizes: $scope.pagingOptionsJob.pageSizes,
+                    paginationPageSize: $scope.pagingOptionsJob.pageSize,
+                    totalItems: 'jobsTotalServerItems',
+                    enableFiltering: true,
+                    enableRowHeaderSelection: false,
+                    enableRowSelection: true,
                     multiSelect: false,
+                    noUnselect: true,
                     showFilter: true,
                     enableColumnResize: true,
                     keepLastSelected: true,
-                    pagingOptions: $scope.pagingOptionsJob,
-                    enablePaging: true,
-                    showFooter: true,
-                    totalServerItems: 'jobsTotalServerItems',
-                    afterSelectionChange: function (rowItem) {
-                        $scope.selectedJobRowId = rowItem.rowIndex;
+                    enableHorizontalScrollbar: 0,
+                    enableVerticalScrollbar: 2,
+                    onRegisterApi: function( gridApi ) {
+                        $scope.gridApi = gridApi;
+                        gridApi.selection.on.rowSelectionChanged($scope, function(row) {
+                            $scope.selectedJob = gridApi.selection.getSelectedRows();
+                        });
+                        $scope.gridApi.pagination.on.paginationChanged($scope, function(currentPage, pageSize){
+                            $scope.pagingOptionsJob.currentPage = currentPage;
+                            $scope.pagingOptionsJob.pageSize = pageSize;
+                            getJobs();
+                        });
                     },
                     columnDefs: [
                         {field: 'name', displayName: 'Name'},
                         {field: 'executionCount', displayName: 'Exec count'},
                         {field: 'incrementable', displayName: 'Incrementable'},
-                        {field: 'executions', displayName: 'See executions',
-                         cellTemplate: '<button type="button" class="btn btn-sm btn-full-width btn-default" data-ng-click="goToJobExecution(row)"> <i class="fa fa-list-alt"></i> </button>'}
+                        {field: 'executions', displayName: 'See executions', enableFiltering: false,
+                         cellTemplate: '<button type="button" class="btn btn-sm btn-full-width btn-default" data-ng-click="grid.appScope.goToJobExecution(row)"> <i class="fa fa-list-alt"></i> </button>'}
                     ]
-                };
-
-                // NgGrid do not resize automatically, call this
-                $scope.resizeGrids = function () {
-                    $domUtilityService.RebuildGrid($scope.jobsListOptions.$gridScope, $scope.jobsListOptions.ngGrid);
                 };
 
                 $scope.goToJobExecution = function(row) {
@@ -275,8 +280,8 @@ define([
             }]);
 
         module.controller('JobsInstanceListController',
-            [ '$scope', 'BatchMonitorService', 'NotificationService', '$location', '$routeParams', '$timeout', /*NgGrid*/ '$domUtilityService', 'PollingService', 'AuthorizationService', 'AuthenticationService',
-            function ($scope, batchMonitorService, notifier, $location, $routeParams, $timeout, $domUtilityService, pollingService, authorizationService, authenticationService) {
+            [ '$scope', 'BatchMonitorService', 'NotificationService', '$location', '$routeParams', '$timeout', 'PollingService', 'AuthorizationService', 'AuthenticationService',
+            function ($scope, batchMonitorService, notifier, $location, $routeParams, $timeout, pollingService, authorizationService, authenticationService) {
 
                 $scope.authorization = authorizationService;
                 $scope.authentication = authenticationService;
@@ -326,12 +331,12 @@ define([
                                         $scope.jobsExecutionTotalServerItems = jobExecution.totalItems;
                                         $timeout(function () {
                                             if (!$scope.isPolling) {
-                                                $scope.jobExecutionOptions.selectRow(0, true);
+                                                $scope.gridApi.selection.selectRow($scope.jobExecution[0]);
                                             } else {
                                                 if ($scope.selectedJobExecution.length) {
-                                                    $scope.jobExecutionOptions.selectRow($scope.selectedJobExecutionRowId, true);
+                                                    $scope.gridApi.selection.selectRow($scope.selectedJobExecution);
                                                 } else {
-                                                    $scope.jobExecutionOptions.selectRow(0, true);
+                                                    $scope.gridApi.selection.selectRow($scope.jobExecution[0]);
                                                 }
                                             }
                                            graphJobExecution($scope.jobExecution);
@@ -371,16 +376,31 @@ define([
 
                 $scope.jobExecutionOptions = {
                     data: 'jobExecution',
-                    selectedItems: $scope.selectedJobExecution,
+                    enablePaginationControls: true,
+                    paginationPageSizes: $scope.pagingOptionsJobExecution.pageSizes,
+                    paginationPageSize: $scope.pagingOptionsJobExecution.pageSize,
+                    totalItems: 'jobsExecutionTotalServerItems',
+                    enableRowHeaderSelection: false,
+                    enableFiltering: true,
+                    noUnselect: true,
+                    enableRowSelection: true,
                     multiSelect: false,
                     showFilter: true,
                     enableColumnResize: true,
                     pagingOptions: $scope.pagingOptionsJobExecution,
-                    totalServerItems: 'jobsExecutionTotalServerItems',
-                    enablePaging: true,
                     showFooter: true,
-                    afterSelectionChange: function (rowItem) {
-                        $scope.selectedJobExecutionRowId = rowItem.rowIndex;
+                    enableHorizontalScrollbar: 0,
+                    enableVerticalScrollbar: 2,
+                    onRegisterApi: function( gridApi ) {
+                        $scope.gridApi = gridApi;
+                        gridApi.selection.on.rowSelectionChanged($scope, function (row) {
+                            $scope.selectedJobExecution = gridApi.selection.getSelectedRows();
+                        });
+                        $scope.gridApi.pagination.on.paginationChanged($scope, function(currentPage, pageSize){
+                            $scope.pagingOptionsJobExecution.currentPage = currentPage;
+                            $scope.pagingOptionsJobExecution.pageSize = pageSize;
+                            getJobExecutions($scope.selectedJob);
+                        });
                     },
                     columnDefs: [
                         {field: 'id', displayName: 'ID', width: 40},
@@ -390,23 +410,17 @@ define([
                         {field: 'duration', displayName: 'Duration'},
                         {field: 'exitStatus.exitCode', displayName: 'Status',
                             cellTemplate:
-                                '<div data-ng-class="{bold: true, completed: row.getProperty(col.field) === \'COMPLETED\', failed: row.getProperty(col.field) === \'FAILED\'}">' +
-                                '<div class="ngCellText">{{row.getProperty(col.field)}}</div>' +
+                                '<div data-ng-class="{bold: true, completed: COL_FIELD === \'COMPLETED\', failed: COL_FIELD === \'FAILED\'}">' +
+                                '<div class="ngCellText">{{ COL_FIELD }}</div>' +
                                 '</div>'},
                         {field: 'stepExecutionCount', displayName: 'Steps Count'},
-                        {field: 'steps', displayName: 'See steps',
-                            cellTemplate: '<button type="button" class="btn btn-sm btn-full-width btn-default" data-ng-click="goToSteps(row)"> <i class="fa fa-bar-chart-o"></i> </button>'}
+                        {field: 'steps', displayName: 'See steps', enableFiltering: false,
+                            cellTemplate: '<button type="button" class="btn btn-sm btn-full-width btn-default" data-ng-click="grid.appScope.goToSteps(row)"> <i class="fa fa-bar-chart-o"></i> </button>'}
                     ]
                 };
 
-                $scope.$watch('pagingOptionsJobExecution', function (newVal, oldVal) {
-                    if (newVal !== oldVal && newVal.currentPage !== oldVal.currentPage && newVal.currentPage) {
-                        getJobExecutions($scope.selectedJob);
-                    }
-                }, true);
-
-                $scope.resizeGrids = function () {
-                    $domUtilityService.RebuildGrid($scope.jobExecutionOptions.$gridScope, $scope.jobExecutionOptions.ngGrid);
+                $scope.resizeGrids = function() {
+                    $scope.gridApi.core.handleWindowResize();
                 };
 
                 try {
@@ -460,8 +474,8 @@ define([
         ]);
 
         module.controller('StepDetailsController',
-            [ '$scope', 'BatchMonitorService', 'NotificationService', '$routeParams', '$timeout', /*NgGrid*/ '$domUtilityService', 'PollingService', 'AuthorizationService', 'AuthenticationService',
-            function ($scope, batchMonitorService, notifier, $routeParams, $timeout, $domUtilityService, pollingService, authorizationService, authenticationService) {
+            [ '$scope', 'BatchMonitorService', 'NotificationService', '$routeParams', '$timeout', 'PollingService', 'AuthorizationService', 'AuthenticationService',
+            function ($scope, batchMonitorService, notifier, $routeParams, $timeout, pollingService, authorizationService, authenticationService) {
 
                 $scope.authorization = authorizationService;
                 $scope.authentication = authenticationService;
@@ -485,12 +499,12 @@ define([
                                 $scope.steps = steps;
                                 $timeout(function () {
                                     if (!$scope.isPolling) {
-                                        $scope.stepsOptions.selectRow(0, true);
+                                        $scope.gridApi.selection.selectRow($scope.steps[0]);
                                     } else {
                                         if ($scope.selectedStep.length) {
-                                            $scope.stepsOptions.selectRow($scope.selectedStepRowId, true);
+                                            $scope.gridApi.selection.selectRow($scope.selectedStep);
                                         } else {
-                                            $scope.stepsOptions.selectRow(0, true);
+                                            $scope.gridApi.selection.selectRow($scope.steps[0]);
                                         }
                                     }
                                     graphSteps($scope.steps);
@@ -510,8 +524,8 @@ define([
                 function getStepDetails(jobExecutionId, stepExecutionId) {
                     batchMonitorService.stepDetails.get({jobExecutionId: jobExecutionId, stepExecutionId: stepExecutionId},
                         function (stepDetails) {
-                            if (stepDetails && stepDetails.stepExecutionDetailsRepresentaion) {
-                                $scope.progressSteps = formatDetailsStepExecution(stepDetails.stepExecutionDetailsRepresentaion);
+                            if (stepDetails && stepDetails.stepExecutionDetailsRepresentation) {
+                                $scope.progressSteps = formatDetailsStepExecution(stepDetails.stepExecutionDetailsRepresentation);
                                 updateAnnoucements($scope.progressSteps);
                             }
                         },
@@ -558,7 +572,6 @@ define([
                         }
                     );
                 }
-
 
                 function updateAnnoucements(arrayDetail) {
                     angular.forEach(arrayDetail, function(detail) {
@@ -633,30 +646,38 @@ define([
                     }, POLLING);
                 }
 
+                $scope.resizeGrids = function() {
+                    $scope.gridApi.core.handleWindowResize();
+                };
+
                 // Grid : steps
                 $scope.stepsOptions = {
                     data: 'steps',
+                    enableRowHeaderSelection: false,
+                    enableRowSelection: true,
                     multiSelect: false,
-                    selectedItems: $scope.selectedStep,
+                    enableFiltering: true,
+                    noUnselect: true,
                     showFilter: true,
                     enableColumnResize: true,
-                    afterSelectionChange: function (rowItem) {
-                        $scope.selectedStepRowId = rowItem.rowIndex;
+                    enableHorizontalScrollbar: 0,
+                    enableVerticalScrollbar: 2,
+                    onRegisterApi: function( gridApi ) {
+                        $scope.gridApi = gridApi;
+                        gridApi.selection.on.rowSelectionChanged($scope, function (row) {
+                            $scope.selectedStep = gridApi.selection.getSelectedRows();
+                        });
                     },
                     columnDefs: [
                         {field: 'id', displayName: 'ID', width: 40},
                         {field: 'jobExecutionId', displayName: 'job execution', width: 120},
                         {field: 'name', displayName: 'Step name', width: 220},
-                        {field: 'status', displayName: 'Status', cellTemplate: '<div data-ng-class="{bold: true, completed: row.getProperty(col.field) === \'COMPLETED\', failed: row.getProperty(col.field) === \'FAILED\'}">' +
-                            '<div class="ngCellText">{{row.getProperty(col.field)}}</div>' +
+                        {field: 'status', displayName: 'Status', cellTemplate: '<div data-ng-class="{bold: true, completed: COL_FIELD === \'COMPLETED\', failed: COL_FIELD === \'FAILED\'}">' +
+                            '<div class="ngCellText">{{ COL_FIELD }}</div>' +
                             '</div>'
                         }
 
                     ]
-                };
-
-                $scope.resizeGrids = function () {
-                    $domUtilityService.RebuildGrid($scope.stepsOptions.$gridScope, $scope.stepsOptions.ngGrid);
                 };
 
                 try {
