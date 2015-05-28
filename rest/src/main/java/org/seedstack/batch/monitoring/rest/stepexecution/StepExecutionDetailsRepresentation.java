@@ -19,11 +19,11 @@ import org.springframework.batch.item.ExecutionContext;
 import org.springframework.util.Assert;
 
 /**
- * The Class StepExecutionDetailsRepresentaion.
- * 
+ * The Class StepExecutionDetailsRepresentation.
+ *
  * @author aymen.abbes@ext.mpsa.com
  */
-public class StepExecutionDetailsRepresentaion {
+public class StepExecutionDetailsRepresentation {
 
 	/** The step name. */
 	private String stepName;
@@ -87,11 +87,11 @@ public class StepExecutionDetailsRepresentaion {
 
 	/**
 	 * Constructor that substitutes in null for the execution id.
-	 * 
+	 *
 	 * @param stepExecution
 	 *            the step execution
 	 */
-	public StepExecutionDetailsRepresentaion(StepExecution stepExecution) {
+	public StepExecutionDetailsRepresentation(StepExecution stepExecution) {
 		Assert.notNull(stepExecution.getId(),
 				"The entity Id must be provided to re-hydrate an existing StepExecution");
 		this.stepName = stepExecution.getStepName();
@@ -138,7 +138,7 @@ public class StepExecutionDetailsRepresentaion {
 
 	/**
 	 * Returns the {@link ExecutionContext} for this execution.
-	 * 
+	 *
 	 * @return the attributes
 	 */
 	public ExecutionContext getExecutionContext() {
@@ -147,7 +147,7 @@ public class StepExecutionDetailsRepresentaion {
 
 	/**
 	 * Sets the {@link ExecutionContext} for this execution.
-	 * 
+	 *
 	 * @param executionContext
 	 *            the attributes
 	 */
@@ -157,7 +157,7 @@ public class StepExecutionDetailsRepresentaion {
 
 	/**
 	 * Returns the current number of commits for this execution.
-	 * 
+	 *
 	 * @return the current number of commits
 	 */
 	public int getCommitCount() {
@@ -166,7 +166,7 @@ public class StepExecutionDetailsRepresentaion {
 
 	/**
 	 * Sets the current number of commits for this execution.
-	 * 
+	 *
 	 * @param commitCount
 	 *            the current number of commits
 	 */
@@ -176,7 +176,7 @@ public class StepExecutionDetailsRepresentaion {
 
 	/**
 	 * Returns the time that this execution ended.
-	 * 
+	 *
 	 * @return the time that this execution ended
 	 */
 	public String getEndTime() {
@@ -185,7 +185,7 @@ public class StepExecutionDetailsRepresentaion {
 
 	/**
 	 * Sets the time that this execution ended.
-	 * 
+	 *
 	 * @param endTime
 	 *            the time that this execution ended
 	 */
@@ -195,7 +195,7 @@ public class StepExecutionDetailsRepresentaion {
 
 	/**
 	 * Returns the current number of items read for this execution.
-	 * 
+	 *
 	 * @return the current number of items read for this execution
 	 */
 	public int getReadCount() {
@@ -204,7 +204,7 @@ public class StepExecutionDetailsRepresentaion {
 
 	/**
 	 * Sets the current number of read items for this execution.
-	 * 
+	 *
 	 * @param readCount
 	 *            the current number of read items for this execution
 	 */
@@ -214,7 +214,7 @@ public class StepExecutionDetailsRepresentaion {
 
 	/**
 	 * Returns the current number of items written for this execution.
-	 * 
+	 *
 	 * @return the current number of items written for this execution
 	 */
 	public int getWriteCount() {
@@ -223,7 +223,7 @@ public class StepExecutionDetailsRepresentaion {
 
 	/**
 	 * Sets the current number of written items for this execution.
-	 * 
+	 *
 	 * @param writeCount
 	 *            the current number of written items for this execution
 	 */
@@ -233,7 +233,7 @@ public class StepExecutionDetailsRepresentaion {
 
 	/**
 	 * Returns the current number of rollbacks for this execution.
-	 * 
+	 *
 	 * @return the current number of rollbacks for this execution
 	 */
 	public int getRollbackCount() {
@@ -242,7 +242,7 @@ public class StepExecutionDetailsRepresentaion {
 
 	/**
 	 * Returns the current number of items filtered out of this execution.
-	 * 
+	 *
 	 * @return the current number of items filtered out of this execution
 	 */
 	public int getFilterCount() {
@@ -251,7 +251,7 @@ public class StepExecutionDetailsRepresentaion {
 
 	/**
 	 * Public setter for the number of items filtered out of this execution.
-	 * 
+	 *
 	 * @param filterCount
 	 *            the number of items filtered out of this execution to set
 	 */
@@ -261,7 +261,7 @@ public class StepExecutionDetailsRepresentaion {
 
 	/**
 	 * Setter for number of rollbacks for this execution.
-	 * 
+	 *
 	 * @param rollbackCount
 	 *            the new rollback count
 	 */
@@ -271,7 +271,7 @@ public class StepExecutionDetailsRepresentaion {
 
 	/**
 	 * Gets the time this execution started.
-	 * 
+	 *
 	 * @return the time this execution started
 	 */
 	public String getStartTime() {
@@ -280,7 +280,7 @@ public class StepExecutionDetailsRepresentaion {
 
 	/**
 	 * Sets the time this execution started.
-	 * 
+	 *
 	 * @param startTime
 	 *            the time this execution started
 	 */
@@ -290,7 +290,7 @@ public class StepExecutionDetailsRepresentaion {
 
 	/**
 	 * Returns the current status of this step.
-	 * 
+	 *
 	 * @return the current status of this step
 	 */
 	public BatchStatus getStatus() {
@@ -299,7 +299,7 @@ public class StepExecutionDetailsRepresentaion {
 
 	/**
 	 * Sets the current status of this step.
-	 * 
+	 *
 	 * @param status
 	 *            the current status of this step
 	 */
@@ -311,7 +311,7 @@ public class StepExecutionDetailsRepresentaion {
 	 * Upgrade the status field if the provided value is greater than the
 	 * existing one. Clients using this method to set the status can be sure
 	 * that they don't overwrite a failed status with an successful one.
-	 * 
+	 *
 	 * @param status
 	 *            the new status value
 	 */
@@ -321,7 +321,7 @@ public class StepExecutionDetailsRepresentaion {
 
 	/**
 	 * Gets the step name.
-	 * 
+	 *
 	 * @return the name of the step
 	 */
 	public String getStepName() {
@@ -330,7 +330,7 @@ public class StepExecutionDetailsRepresentaion {
 
 	/**
 	 * Checks if is terminate only.
-	 * 
+	 *
 	 * @return flag to indicate that an execution should halt
 	 */
 	public boolean isTerminateOnly() {
@@ -347,7 +347,7 @@ public class StepExecutionDetailsRepresentaion {
 
 	/**
 	 * Gets the skip count.
-	 * 
+	 *
 	 * @return the total number of items skipped.
 	 */
 	public int getSkipCount() {
@@ -363,7 +363,7 @@ public class StepExecutionDetailsRepresentaion {
 
 	/**
 	 * Gets the read skip count.
-	 * 
+	 *
 	 * @return the number of records skipped on read
 	 */
 	public int getReadSkipCount() {
@@ -372,7 +372,7 @@ public class StepExecutionDetailsRepresentaion {
 
 	/**
 	 * Gets the write skip count.
-	 * 
+	 *
 	 * @return the number of records skipped on write
 	 */
 	public int getWriteSkipCount() {
@@ -381,7 +381,7 @@ public class StepExecutionDetailsRepresentaion {
 
 	/**
 	 * Set the number of records skipped on read.
-	 * 
+	 *
 	 * @param readSkipCount
 	 *            the new read skip count
 	 */
@@ -391,7 +391,7 @@ public class StepExecutionDetailsRepresentaion {
 
 	/**
 	 * Set the number of records skipped on write.
-	 * 
+	 *
 	 * @param writeSkipCount
 	 *            the new write skip count
 	 */
@@ -401,7 +401,7 @@ public class StepExecutionDetailsRepresentaion {
 
 	/**
 	 * Gets the process skip count.
-	 * 
+	 *
 	 * @return the number of records skipped during processing
 	 */
 	public int getProcessSkipCount() {
@@ -410,7 +410,7 @@ public class StepExecutionDetailsRepresentaion {
 
 	/**
 	 * Set the number of records skipped during processing.
-	 * 
+	 *
 	 * @param processSkipCount
 	 *            the new process skip count
 	 */
@@ -420,7 +420,7 @@ public class StepExecutionDetailsRepresentaion {
 
 	/**
 	 * Gets the last updated.
-	 * 
+	 *
 	 * @return the Date representing the last time this execution was persisted.
 	 */
 	public String getLastUpdated() {
@@ -429,7 +429,7 @@ public class StepExecutionDetailsRepresentaion {
 
 	/**
 	 * Set the time when the StepExecution was last updated before persisting.
-	 * 
+	 *
 	 * @param lastUpdated
 	 *            the new last updated
 	 */
@@ -439,7 +439,7 @@ public class StepExecutionDetailsRepresentaion {
 
 	/**
 	 * Gets the failure exceptions.
-	 * 
+	 *
 	 * @return the failure exceptions
 	 */
 	public List<Throwable> getFailureExceptions() {
@@ -448,7 +448,7 @@ public class StepExecutionDetailsRepresentaion {
 
 	/**
 	 * Adds the failure exception.
-	 * 
+	 *
 	 * @param throwable
 	 *            the throwable
 	 */

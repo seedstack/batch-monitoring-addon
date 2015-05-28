@@ -1,3 +1,13 @@
+--
+-- Copyright (c) 2013-2015 by The SeedStack authors. All rights reserved.
+--
+-- This file is part of SeedStack, An enterprise-oriented full development stack.
+--
+-- This Source Code Form is subject to the terms of the Mozilla Public
+-- License, v. 2.0. If a copy of the MPL was not distributed with this
+-- file, You can obtain one at http://mozilla.org/MPL/2.0/.
+--
+
 Insert into BATCH_JOB_EXECUTION_CONTEXT (JOB_EXECUTION_ID,SHORT_CONTEXT) values (1889,'{"map":{"entry":{"string":["valorizationFolder","c:\\ocecar\\costing\\father\\"]}}}');
 Insert into BATCH_JOB_EXECUTION_CONTEXT (JOB_EXECUTION_ID,SHORT_CONTEXT) values (1890,'{"map":{"entry":{"string":["valorizationFolder","c:\\ocecar\\costing\\father\\"]}}}');
 Insert into BATCH_JOB_EXECUTION_CONTEXT (JOB_EXECUTION_ID,SHORT_CONTEXT) values (1907,'{"map":{"entry":{"string":["costingFolder","c:\\ocecar\\costing\\father\\"]}}}');

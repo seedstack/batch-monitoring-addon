@@ -1,3 +1,13 @@
+--
+-- Copyright (c) 2013-2015 by The SeedStack authors. All rights reserved.
+--
+-- This file is part of SeedStack, An enterprise-oriented full development stack.
+--
+-- This Source Code Form is subject to the terms of the Mozilla Public
+-- License, v. 2.0. If a copy of the MPL was not distributed with this
+-- file, You can obtain one at http://mozilla.org/MPL/2.0/.
+--
+
 Insert into BATCH_JOB_INSTANCE (JOB_INSTANCE_ID,VERSION,JOB_NAME,JOB_KEY) values (1889,0,'jobDataTransferValorisationFather','eb5a5c1a413eef7161e6ad2cb6aeb155');
 Insert into BATCH_JOB_INSTANCE (JOB_INSTANCE_ID,VERSION,JOB_NAME,JOB_KEY) values (1890,0,'jobDataTransferValorisationFather','c01738377b6e326697b928c344937138');
 Insert into BATCH_JOB_INSTANCE (JOB_INSTANCE_ID,VERSION,JOB_NAME,JOB_KEY) values (1907,0,'jobDataTransferCostingFather','d1c8bda84f23d85150b26f3e31d7e8be');

@@ -1,3 +1,13 @@
+--
+-- Copyright (c) 2013-2015 by The SeedStack authors. All rights reserved.
+--
+-- This file is part of SeedStack, An enterprise-oriented full development stack.
+--
+-- This Source Code Form is subject to the terms of the Mozilla Public
+-- License, v. 2.0. If a copy of the MPL was not distributed with this
+-- file, You can obtain one at http://mozilla.org/MPL/2.0/.
+--
+
 Insert into BATCH_JOB_EXECUTION_PARAMS (JOB_EXECUTION_ID,TYPE_CD,KEY_NAME,STRING_VAL,DATE_VAL,LONG_VAL,DOUBLE_VAL,IDENTIFYING) values (1924,'LONG','time',null,to_timestamp('01-01-70 01:00:00','DD-MM-YY HH24:MI:SS'),1426684791863,0,'Y');
 Insert into BATCH_JOB_EXECUTION_PARAMS (JOB_EXECUTION_ID,TYPE_CD,KEY_NAME,STRING_VAL,DATE_VAL,LONG_VAL,DOUBLE_VAL,IDENTIFYING) values (1929,'LONG','time',null,to_timestamp('01-01-70 01:00:00','DD-MM-YY HH24:MI:SS'),1426685244287,0,'Y');
 Insert into BATCH_JOB_EXECUTION_PARAMS (JOB_EXECUTION_ID,TYPE_CD,KEY_NAME,STRING_VAL,DATE_VAL,LONG_VAL,DOUBLE_VAL,IDENTIFYING) values (1930,'LONG','time',null,to_timestamp('01-01-70 01:00:00','DD-MM-YY HH24:MI:SS'),1426685279299,0,'Y');
