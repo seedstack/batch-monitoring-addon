@@ -31,6 +31,12 @@
     <jdbc:initialize-database data-source="dataSource" ignore-failures="DROPS">
         <jdbc:script location="classpath*:/org/springframework/batch/core/schema-drop-hsqldb.sql"/>
         <jdbc:script location="classpath*:/org/springframework/batch/core/schema-hsqldb.sql"/>
+        <jdbc:script location="classpath*:/org/seedstack/batch/monitoring/mock-job-instance.sql"/>
+        <jdbc:script location="classpath*:/org/seedstack/batch/monitoring/mock-job-execution.sql"/>
+        <jdbc:script location="classpath*:/org/seedstack/batch/monitoring/mock-job-execution-context.sql"/>
+        <jdbc:script location="classpath*:/org/seedstack/batch/monitoring/mock-job-execution-params.sql"/>
+        <jdbc:script location="classpath*:/org/seedstack/batch/monitoring/mock-step-execution.sql"/>
+        <jdbc:script location="classpath*:/org/seedstack/batch/monitoring/mock-step-execution-context.sql"/>
     </jdbc:initialize-database>
 
 </beans>

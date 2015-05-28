@@ -179,6 +179,10 @@ define([
                     }
                 }, true);
 
+                $scope.resizeGrids = function() {
+                    $scope.gridApi.core.handleWindowResize();
+                };
+
                 $scope.jobsList = [];
                 $scope.selectedJob = [];
                 $scope.jobsTotalServerItems = 0;
