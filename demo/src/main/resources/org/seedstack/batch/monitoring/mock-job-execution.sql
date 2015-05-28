@@ -1,3 +1,13 @@
+--
+-- Copyright (c) 2013-2015 by The SeedStack authors. All rights reserved.
+--
+-- This file is part of SeedStack, An enterprise-oriented full development stack.
+--
+-- This Source Code Form is subject to the terms of the Mozilla Public
+-- License, v. 2.0. If a copy of the MPL was not distributed with this
+-- file, You can obtain one at http://mozilla.org/MPL/2.0/.
+--
+
 Insert into BATCH_JOB_EXECUTION (JOB_EXECUTION_ID,VERSION,JOB_INSTANCE_ID,CREATE_TIME,START_TIME,END_TIME,STATUS,EXIT_CODE,EXIT_MESSAGE,LAST_UPDATED,JOB_CONFIGURATION_LOCATION) values (1890,2,1890,to_timestamp('18-03-15 09:31:37','DD-MM-YY HH24:MI:SS'),to_timestamp('18-03-15 09:31:37','DD-MM-YY HH24:MI:SS'),to_timestamp('18-03-15 09:31:54','DD-MM-YY HH24:MI:SS'),'COMPLETED','COMPLETED',null,to_timestamp('18-03-15 09:31:54','DD-MM-YY HH24:MI:SS'),null);
 Insert into BATCH_JOB_EXECUTION (JOB_EXECUTION_ID,VERSION,JOB_INSTANCE_ID,CREATE_TIME,START_TIME,END_TIME,STATUS,EXIT_CODE,EXIT_MESSAGE,LAST_UPDATED,JOB_CONFIGURATION_LOCATION) values (1907,2,1907,to_timestamp('18-03-15 14:07:35','DD-MM-YY HH24:MI:SS'),to_timestamp('18-03-15 14:07:35','DD-MM-YY HH24:MI:SS'),to_timestamp('18-03-15 14:07:40','DD-MM-YY HH24:MI:SS'),'COMPLETED','COMPLETED',null,to_timestamp('18-03-15 14:07:40','DD-MM-YY HH24:MI:SS'),null);
 Insert into BATCH_JOB_EXECUTION (JOB_EXECUTION_ID,VERSION,JOB_INSTANCE_ID,CREATE_TIME,START_TIME,END_TIME,STATUS,EXIT_CODE,EXIT_MESSAGE,LAST_UPDATED,JOB_CONFIGURATION_LOCATION) values (1908,2,1908,to_timestamp('18-03-15 14:08:00','DD-MM-YY HH24:MI:SS'),to_timestamp('18-03-15 14:08:00','DD-MM-YY HH24:MI:SS'),to_timestamp('18-03-15 14:08:05','DD-MM-YY HH24:MI:SS'),'COMPLETED','COMPLETED',null,to_timestamp('18-03-15 14:08:05','DD-MM-YY HH24:MI:SS'),null);

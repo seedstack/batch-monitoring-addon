@@ -17,7 +17,7 @@ import org.springframework.batch.core.StepExecution;
 
 /**
  * The Class StepExecutionRepresentation.
- * 
+ *
  * @author aymen.abbes@ext.mpsa.com
  */
 public class StepExecutionRepresentation {
@@ -59,11 +59,11 @@ public class StepExecutionRepresentation {
 	private String endTime;
 
 	/** The step execution details representaion. */
-	private StepExecutionDetailsRepresentaion stepExecutionDetailsRepresentaion;
+	private StepExecutionDetailsRepresentation stepExecutionDetailsRepresentation;
 
 	/**
 	 * Instantiates a new step execution representation.
-	 * 
+	 *
 	 * @param stepExecution
 	 *            the step execution
 	 * @param timeZone
@@ -72,8 +72,7 @@ public class StepExecutionRepresentation {
 	public StepExecutionRepresentation(StepExecution stepExecution,
 			TimeZone timeZone) {
 
-		this.setStepExecutionDetailsRepresentaion(new StepExecutionDetailsRepresentaion(
-				stepExecution));
+		this.setStepExecutionDetailsRepresentation(new StepExecutionDetailsRepresentation(stepExecution));
 		this.id = stepExecution.getId();
 		this.name = stepExecution.getStepName();
 		this.jobName = stepExecution.getJobExecution() == null
@@ -102,7 +101,7 @@ public class StepExecutionRepresentation {
 
 	/**
 	 * Gets the id.
-	 * 
+	 *
 	 * @return the id
 	 */
 	public Long getId() {
@@ -111,7 +110,7 @@ public class StepExecutionRepresentation {
 
 	/**
 	 * Gets the job execution id.
-	 * 
+	 *
 	 * @return the job execution id
 	 */
 	public Long getJobExecutionId() {
@@ -120,7 +119,7 @@ public class StepExecutionRepresentation {
 
 	/**
 	 * Gets the name.
-	 * 
+	 *
 	 * @return the name
 	 */
 	public String getName() {
@@ -129,7 +128,7 @@ public class StepExecutionRepresentation {
 
 	/**
 	 * Gets the job name.
-	 * 
+	 *
 	 * @return the job name
 	 */
 	public String getJobName() {
@@ -138,7 +137,7 @@ public class StepExecutionRepresentation {
 
 	/**
 	 * Gets the start date.
-	 * 
+	 *
 	 * @return the start date
 	 */
 	public String getStartDate() {
@@ -147,7 +146,7 @@ public class StepExecutionRepresentation {
 
 	/**
 	 * Gets the start time.
-	 * 
+	 *
 	 * @return the start time
 	 */
 	public String getStartTime() {
@@ -156,7 +155,7 @@ public class StepExecutionRepresentation {
 
 	/**
 	 * Gets the duration.
-	 * 
+	 *
 	 * @return the duration
 	 */
 	public String getDuration() {
@@ -165,7 +164,7 @@ public class StepExecutionRepresentation {
 
 	/**
 	 * Gets the duration millis.
-	 * 
+	 *
 	 * @return the duration millis
 	 */
 	public long getDurationMillis() {
@@ -174,12 +173,12 @@ public class StepExecutionRepresentation {
 
 	/**
 	 * Gets the status.
-	 * 
+	 *
 	 * @return the status
 	 */
 	public String getStatus() {
 		if (id != null) {
-			return getStepExecutionDetailsRepresentaion().getStatus()
+			return getStepExecutionDetailsRepresentation().getStatus()
 					.toString();
 		}
 		return "NONE";
@@ -187,19 +186,19 @@ public class StepExecutionRepresentation {
 
 	/**
 	 * Gets the exit code.
-	 * 
+	 *
 	 * @return the exit code
 	 */
 	public String getExitCode() {
 		if (id != null) {
-			return getStepExecutionDetailsRepresentaion().getStatusExitCode();
+			return getStepExecutionDetailsRepresentation().getStatusExitCode();
 		}
 		return "NONE";
 	}
 
 	/**
 	 * Gets the end time.
-	 * 
+	 *
 	 * @return the end time
 	 */
 	public String getEndTime() {
@@ -208,7 +207,7 @@ public class StepExecutionRepresentation {
 
 	/**
 	 * Sets the end time.
-	 * 
+	 *
 	 * @param endTime
 	 *            the new end time
 	 */
@@ -218,7 +217,7 @@ public class StepExecutionRepresentation {
 
 	/**
 	 * Sets the id.
-	 * 
+	 *
 	 * @param id
 	 *            the new id
 	 */
@@ -228,7 +227,7 @@ public class StepExecutionRepresentation {
 
 	/**
 	 * Sets the job execution id.
-	 * 
+	 *
 	 * @param jobExecutionId
 	 *            the new job execution id
 	 */
@@ -238,7 +237,7 @@ public class StepExecutionRepresentation {
 
 	/**
 	 * Sets the job name.
-	 * 
+	 *
 	 * @param jobName
 	 *            the new job name
 	 */
@@ -248,7 +247,7 @@ public class StepExecutionRepresentation {
 
 	/**
 	 * Sets the name.
-	 * 
+	 *
 	 * @param name
 	 *            the new name
 	 */
@@ -258,7 +257,7 @@ public class StepExecutionRepresentation {
 
 	/**
 	 * Sets the start date.
-	 * 
+	 *
 	 * @param startDate
 	 *            the new start date
 	 */
@@ -268,7 +267,7 @@ public class StepExecutionRepresentation {
 
 	/**
 	 * Sets the start time.
-	 * 
+	 *
 	 * @param startTime
 	 *            the new start time
 	 */
@@ -278,7 +277,7 @@ public class StepExecutionRepresentation {
 
 	/**
 	 * Sets the duration.
-	 * 
+	 *
 	 * @param duration
 	 *            the new duration
 	 */
@@ -288,7 +287,7 @@ public class StepExecutionRepresentation {
 
 	/**
 	 * Sets the duration millis.
-	 * 
+	 *
 	 * @param durationMillis
 	 *            the new duration millis
 	 */
@@ -298,21 +297,21 @@ public class StepExecutionRepresentation {
 
 	/**
 	 * Gets the step execution details representaion.
-	 * 
+	 *
 	 * @return the step execution details representaion
 	 */
-	public StepExecutionDetailsRepresentaion getStepExecutionDetailsRepresentaion() {
-		return stepExecutionDetailsRepresentaion;
+	public StepExecutionDetailsRepresentation getStepExecutionDetailsRepresentation() {
+		return stepExecutionDetailsRepresentation;
 	}
 
 	/**
 	 * Sets the step execution details representaion.
-	 * 
+	 *
 	 * @param stepExecutionDetailsRepresentaion
 	 *            the new step execution details representaion
 	 */
-	public void setStepExecutionDetailsRepresentaion(
-			StepExecutionDetailsRepresentaion stepExecutionDetailsRepresentaion) {
-		this.stepExecutionDetailsRepresentaion = stepExecutionDetailsRepresentaion;
+	public void setStepExecutionDetailsRepresentation(
+			StepExecutionDetailsRepresentation stepExecutionDetailsRepresentaion) {
+		this.stepExecutionDetailsRepresentation = stepExecutionDetailsRepresentaion;
 	}
 }
