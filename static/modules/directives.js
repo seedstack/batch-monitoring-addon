@@ -37,8 +37,16 @@ define([
                 restrict: 'A',
                 template: breadcrumbTemplate,
                 link: function(scope) {
+                    scope.showBack = $routeParams.jobName ? true : false;
                     scope.jobName = $routeParams.jobName;
                     scope.jobExecutionId = $routeParams.jobExecutionId;
+                    scope.goBack = function () {
+                        if ($routeParams.jobName && $routeParams.jobExecutionId) {
+                            $location.path('/batch/jobs-list/' + $routeParams.jobName);
+                        } else if ($routeParams.jobName) {
+                            $location.path('/batch/jobs-list/');
+                        }
+                    }
                 }
             };
         }]);

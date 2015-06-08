@@ -10,9 +10,32 @@
 
 /******** Titles **********/
 
+.seed-batch h1 {
+    color: #666666;
+    border-bottom: none;
+}
+
 .seed-batch h4 {
+    color: #666666;
     font-size: 18px;
 }
+
+.seed-batch .item:hover {
+    cursor: pointer;
+    background-color: #F8F8F8;
+}
+
+.seed-batch .progress-label {
+    color: #45983e;
+    font-size: 25px;
+    margin-right: 10px;
+}
+
+.seed-batch .failed-label {
+    color: #FB5858;
+    font-size: 25px;
+}
+
 
 /******** Header **********/
 
@@ -24,60 +47,43 @@
     background-color: inherit;
 }
 
-.seed-batch .breadcrumb.batch a {
+.seed-batch .breadcrumb.batch li a {
     color:#000 !important;
-}
-
-/******** Batch map diagram (dendrogram) ************/
-
-.seed-batch .batch-map-diagram {
-    height: 838px;
-    border: 1px solid #DDDDDD;
-}
-
-.seed-batch .batch-map-diagram .node circle {
-    cursor: pointer;
-    fill: #fff;
-    stroke-width: 1.5px;
-}
-
-.seed-batch .batch-map-diagram .node text {
-    font-size: 11px;
-}
-
-.seed-batch .batch-map-diagram path.link {
-    fill: none;
-    stroke: #ccc;
-    stroke-width: 1.5px;
+    font-size: 18px;
 }
 
 /********* Charts **************/
 
 .seed-batch #discretebar {
-    height:300px;
+    height: 150px;
 }
 
-.seed-batch #pieChart {
-    height: 370px
+.seed-batch .pieChart {
+    position: absolute;
+    z-index: 100;
+    top: -35px;
+    left: -60px;
+    height: 100px;
+    width: 165px;
 }
 
-/********* Grid color override ***********/
+/********* Override ***********/
 
-.seed-batch .ui-grid-row:nth-child(even) .ui-grid-cell {
-    background-color: #ffffff;
+.seed-batch .no-margin {
+    margin: 0 !important;
 }
 
-.seed-batch .ui-grid-row.ui-grid-row-selected > [ui-grid-row] > .ui-grid-cell {
-    background-color: #efeded;
+.seed-batch .pagination > .active > a,
+.seed-batch .pagination > .active > a:hover {
+    background-color: #666666;
+    border-color: #666666;
 }
 
-/********** Grid ***************/
-
-.seed-batch .btn-full-width {
-    width:100%;
-    border-radius:0!important;
-    border-color:transparent!important;
+.seed-batch .pagination a {
+    color: inherit;
 }
+
+/********** Label ***************/
 
 .seed-batch .bold {
     font-weight:700;

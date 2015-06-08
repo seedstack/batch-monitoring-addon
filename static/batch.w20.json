@@ -13,8 +13,8 @@
         "batch": {
             "path": "{batch}/modules/batch",
             "autoload": true,
-             "config": {
-                "seedBatchMonitoringWebRestPrefix": "${seed-rest-path}"
+            "config": {
+                "restPrefix": "${seed-rest-path}"
             }
         },
         "directives": {

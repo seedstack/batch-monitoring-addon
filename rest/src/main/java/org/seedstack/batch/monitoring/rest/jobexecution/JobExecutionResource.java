@@ -35,7 +35,7 @@ import org.seedstack.seed.security.api.annotations.RequiresPermissions;
 
 /**
  * Resource for job executions.
- * 
+ *
  * @author aymen.abbes@ext.mpsa.com
  */
 @Path("/jobs/{jobName}/job-executions")
@@ -52,7 +52,7 @@ public class JobExecutionResource {
 
 	/**
 	 * job-Executions By JobName
-	 * 
+	 *
 	 * @param jobName
 	 * @param startJob
 	 * @param pageSize
@@ -64,7 +64,7 @@ public class JobExecutionResource {
 	public Response jobExecutionsByJobName(
 			@PathParam("jobName") String jobName,
 			@DefaultValue("1") @QueryParam("pageIndex") int pageIndex,
-			@DefaultValue("20") @QueryParam("pageSize") int pageSize) {
+			@DefaultValue("1000") @QueryParam("pageSize") int pageSize) {
 
 		int startJob = (pageIndex - 1) * pageSize;
 		ArrayList<JobExecutionInfo> jobExecutionInfos = new ArrayList<JobExecutionInfo>();
@@ -94,7 +94,7 @@ public class JobExecutionResource {
 
 	/**
 	 * JobExecution by jobExecutionId.
-	 * 
+	 *
 	 * @param jobExecutionId
 	 *            the job execution id
 	 * @return JobExecutionRepresentation
