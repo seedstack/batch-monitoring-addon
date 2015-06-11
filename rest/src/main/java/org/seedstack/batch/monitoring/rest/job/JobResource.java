@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -25,6 +26,8 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.google.common.base.Predicates;
+import com.google.common.collect.Collections2;
 import org.seedstack.batch.monitoring.rest.jobexecution.JobExecutionInfo;
 import org.seedstack.batch.monitoring.rest.jobexecution.JobExecutionRepresentation;
 import org.slf4j.Logger;
@@ -39,7 +42,7 @@ import org.seedstack.seed.security.api.annotations.RequiresPermissions;
 
 /**
  * resource for listing jobs & jobexecution by jobName.
- * 
+ *
  * * @author aymen.abbes@ext.mpsa.com
  */
 @Path("/jobs")
@@ -68,7 +71,7 @@ public class JobResource {
 
 	/**
 	 * list of jobs.
-	 * 
+	 *
 	 * @param pageIndex
 	 *            the page index
 	 * @param pageSize
@@ -81,12 +84,19 @@ public class JobResource {
 	@RequiresPermissions("seed:monitoring:batch:read")
 	public Response jobs(
 			@DefaultValue("1") @QueryParam("pageIndex") int pageIndex,
-			@DefaultValue("20") @QueryParam("pageSize") int pageSize) {
+			@DefaultValue("20") @QueryParam("pageSize") int pageSize,
+			@QueryParam("searchedJob") String searchedJob) {
 
-		int startJob = (pageIndex - 1) * pageSize;
+        Collection<String> names;
+        int totalItems = jobService.countJobs();
 
-		Collection<String> names = jobService.listJobs(startJob, pageSize);
-		int totalItems = jobService.countJobs();
+        if (searchedJob != null) {
+            names = Collections2.filter(jobService.listJobs(0, totalItems), Predicates.contains(Pattern.compile(searchedJob, Pattern.CASE_INSENSITIVE)));
+            totalItems = names.size();
+        } else {
+            int startJob = (pageIndex - 1) * pageSize;
+            names = jobService.listJobs(startJob, pageSize);
+        }
 
 		ArrayList<JobInfo> jobs = new ArrayList<JobInfo>();
 
@@ -114,7 +124,7 @@ public class JobResource {
 
 	/**
 	 * All jobExecutions.
-	 * 
+	 *
 	 * @param pageIndex
 	 *            the page index
 	 * @param pageSize
@@ -148,7 +158,7 @@ public class JobResource {
 
 	/**
 	 * Jobs tree.
-	 * 
+	 *
 	 * @param jobName
 	 *            the job name
 	 * @return the response

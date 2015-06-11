@@ -1,9 +1,7 @@
 <ol class="breadcrumb batch">
     <li>
-        <button class="btn btn-xs btn-show-hide-menu"
-                data-ng-click="showMap = !showMap"
-                data-ng-class="{'btn-default': !showMap, 'btn-success': showMap }">
-            <i class="fa fa-list-ul"></i> {{ "application.view.batch.batchtree" | localize }}
+        <button data-ng-show="showBack" data-ng-click="goBack()" class="btn btn-xs btn-success">
+            <i class="fa fa-arrow-left"></i> {{ "application.view.batch.back" | localize }}
         </button>
     </li>
     <li>

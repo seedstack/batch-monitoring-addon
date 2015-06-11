@@ -18,6 +18,7 @@ define([
         '{angular-mocks}/angular-mocks'
     ],
     function(require, _module, $, angular) {
+        'use strict';
 
         var module = angular.module('batchMock', [ 'ngMockE2E' ]);
 
