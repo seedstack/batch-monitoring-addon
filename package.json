@@ -1,6 +1,6 @@
 {
   "name": "seedstack-batch-monitoring-function",
-  "version": "2.0.0-M2",
+  "version": "2.0.0",
   "description": "SeedStack batch monitoring reusable function",
   "license": "MPL 2.0",
   "contributors": [
