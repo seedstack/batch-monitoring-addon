@@ -9,44 +9,46 @@
  */
 package org.seedstack.batch.monitoring.rest.jobexecution;
 
+import org.springframework.batch.admin.web.JobExecutionInfo;
+
 import java.util.ArrayList;
 
 /**
  * The Class JobExecutionRepresentation.
- * 
+ *
  * @author aymen.abbes@ext.mpsa.com
  */
 public class JobExecutionRepresentation {
 
-	private int pageIndex;
-	private int pageSize;
+    private int pageIndex;
+    private int pageSize;
 
-	private int totalItems;
-	private ArrayList<JobExecutionInfo> results;
+    private int totalItems;
+    private ArrayList<JobExecutionInfo> results;
 
-	public JobExecutionRepresentation(int pageIndex, int pageSize,
-			int totalItems, ArrayList<JobExecutionInfo> results) {
-		super();
-		this.pageIndex = pageIndex;
-		this.pageSize = pageSize;
-		this.totalItems = totalItems;
-		this.results = results;
-	}
+    public JobExecutionRepresentation(int pageIndex, int pageSize,
+                                      int totalItems, ArrayList<JobExecutionInfo> results) {
+        super();
+        this.pageIndex = pageIndex;
+        this.pageSize = pageSize;
+        this.totalItems = totalItems;
+        this.results = results;
+    }
 
-	public int getPageSize() {
-		return pageSize;
-	}
+    public int getPageSize() {
+        return pageSize;
+    }
 
-	public int getPageIndex() {
-		return pageIndex;
-	}
+    public int getPageIndex() {
+        return pageIndex;
+    }
 
-	public int getTotalItems() {
-		return totalItems;
-	}
+    public int getTotalItems() {
+        return totalItems;
+    }
 
-	public ArrayList<JobExecutionInfo> getResults() {
-		return results;
-	}
+    public ArrayList<JobExecutionInfo> getResults() {
+        return results;
+    }
 
 }

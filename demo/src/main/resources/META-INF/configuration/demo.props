@@ -15,7 +15,7 @@ application-id = batch-monitoring-demo
 resources.minification-support = false
 
 [org.seedstack.seed.security.users]
-admin = admin
+demo = demo
 
 [org.seedstack.seed.security.roles]
 monitoring = *

@@ -35,7 +35,7 @@
 
     <bean id="jobRegistry" class="org.springframework.batch.core.configuration.support.MapJobRegistry"/>
 
-    <bean id="jobService" class="org.seedstack.batch.monitoring.service.impl.JobServiceImplFactoryBean">
+    <bean id="jobService" class="org.springframework.batch.admin.service.SimpleJobServiceFactoryBean">
         <property name="tablePrefix">
             <seed:configuration key="org.seedstack.batch.monitoring.datasource.table.prefix"/>
         </property>

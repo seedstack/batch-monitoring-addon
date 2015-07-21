@@ -10,7 +10,8 @@
     file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.seedstack</groupId>
@@ -96,6 +97,23 @@
         <pluginManagement>
             <plugins>
                 <plugin>
+                    <groupId>com.mycila</groupId>
+                    <artifactId>license-maven-plugin</artifactId>
+                    <configuration>
+                        <excludes>
+                            <exclude>AUTHORS</exclude>
+                            <exclude>CONTRIBUTORS</exclude>
+                            <exclude>LICENSE</exclude>
+                            <exclude>**/bower_components/**</exclude>
+                            <exclude>**/node_modules/**</exclude>
+                            <exclude>**/templates/**/*.html</exclude>
+                            <exclude>**/views/**/*.html</exclude>
+                            <exclude>**/src/license/THIRD-PARTY.properties</exclude>
+                            <exclude>**/org/springframework/batch/admin/**</exclude>
+                        </excludes>
+                    </configuration>
+                </plugin>
+                <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>license-maven-plugin</artifactId>
                     <configuration>
@@ -126,7 +144,8 @@
                             <licenseMerge>BSD|BSD style</licenseMerge>
                             <licenseMerge>BSD|The New BSD License</licenseMerge>
                             <licenseMerge>EPL 1.0|Eclipse Public License - v 1.0</licenseMerge>
-                            <licenseMerge>Indiana|Indiana University Extreme! Lab Software License, vesion 1.1.1</licenseMerge>
+                            <licenseMerge>Indiana|Indiana University Extreme! Lab Software License, vesion 1.1.1
+                            </licenseMerge>
                             <licenseMerge>LGPL 2.1|GNU Lesser General Public License</licenseMerge>
                             <licenseMerge>LGPL 3.0|GNU Lesser Public License</licenseMerge>
                             <licenseMerge>MIT|MIT License</licenseMerge>
