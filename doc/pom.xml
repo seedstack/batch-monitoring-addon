@@ -37,7 +37,7 @@
                             <detectOfflineLinks>false</detectOfflineLinks>
                             <includeDependencySources>true</includeDependencySources>
                             <includeTransitiveDependencySources>false</includeTransitiveDependencySources>
-                            <excludePackageNames>*.internal.*</excludePackageNames>
+                            <excludePackageNames>*.internal.*,org.springframework.batch.admin.*</excludePackageNames>
                         </configuration>
                     </execution>
                 </executions>

@@ -9,42 +9,44 @@
  */
 package org.seedstack.batch.monitoring.rest.job;
 
+import org.springframework.batch.admin.web.JobInfo;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * The Class JobRepresentation.
- * 
+ *
  * @author aymen.abbes@ext.mpsa.com
  */
 public class JobRepresentation {
-	private int pageIndex;
-	private int pageSize;
-	private int totalItems;
-	private List<JobInfo> results;
+    private int pageIndex;
+    private int pageSize;
+    private int totalItems;
+    private List<JobInfo> results;
 
-	public JobRepresentation(int pageIndex, int pageSize, int totalItems,
-			ArrayList<JobInfo> results) {
-		this.pageIndex = pageIndex;
-		this.pageSize = pageSize;
-		this.totalItems = totalItems;
-		this.results = results;
-	}
+    public JobRepresentation(int pageIndex, int pageSize, int totalItems,
+                             ArrayList<JobInfo> results) {
+        this.pageIndex = pageIndex;
+        this.pageSize = pageSize;
+        this.totalItems = totalItems;
+        this.results = results;
+    }
 
-	public int getPageIndex() {
-		return pageIndex;
-	}
+    public int getPageIndex() {
+        return pageIndex;
+    }
 
-	public int getPageSize() {
-		return pageSize;
-	}
+    public int getPageSize() {
+        return pageSize;
+    }
 
-	public int getTotalItems() {
-		return totalItems;
-	}
+    public int getTotalItems() {
+        return totalItems;
+    }
 
-	public List<JobInfo> getResults() {
-		return results;
-	}
+    public List<JobInfo> getResults() {
+        return results;
+    }
 
 }

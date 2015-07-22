@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2013-2015 by The SeedStack authors. All rights reserved.
+
+    This file is part of SeedStack, An enterprise-oriented full development stack.
+
+    This Source Code Form is subject to the terms of the Mozilla Public
+    License, v. 2.0. If a copy of the MPL was not distributed with this
+    file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+-->
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<import resource="classpath*:/env-context.xml" />
+	<import resource="classpath*:/data-source-context.xml" />
+
+	<bean class="org.springframework.batch.test.JobRepositoryTestUtils">
+		<property name="dataSource" ref="dataSource" />
+		<property name="jobRepository">
+			<bean class="org.springframework.batch.core.repository.support.JobRepositoryFactoryBean">
+				<property name="validateTransactionState" value="false"/>
+				<property name="dataSource" ref="dataSource"/>
+				<property name="transactionManager" ref="transactionManager"/>
+			</bean>
+		</property>
+	</bean>
+
+</beans>
