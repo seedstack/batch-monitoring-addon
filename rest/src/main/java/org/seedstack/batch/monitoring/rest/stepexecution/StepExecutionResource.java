@@ -54,9 +54,11 @@ public class StepExecutionResource {
         try {
             for (StepExecution stepExecution : jobService
                     .getStepExecutions(jobExecutionId)) {
-                stepExecutionRepresentations
-                        .add(new StepExecutionRepresentation(stepExecution,
-                                TimeZone.getTimeZone("GMT")));
+                if (stepExecution.getId() != null) {
+                    stepExecutionRepresentations
+                            .add(new StepExecutionRepresentation(stepExecution,
+                                    TimeZone.getTimeZone("GMT")));
+                }
             }
 
         } catch (NoSuchJobExecutionException e) {
