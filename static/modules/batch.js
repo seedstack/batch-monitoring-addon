@@ -411,8 +411,8 @@ define([
                                         count: currentRow.count,
                                         min: currentRow.min,
                                         max: currentRow.max,
-                                        mean: currentRow.mean,
-                                        sigma: currentRow.standardDeviation});
+                                        mean: Math.round(currentRow.mean * 100) / 100,
+                                        sigma: Math.round(currentRow.standardDeviation * 100) / 100});
                                 }
                             }
                         }
