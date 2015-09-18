@@ -461,12 +461,12 @@ define([
                         });
                     }
 
-                    $scope.showFullDetails = function () {
-                        angular.element('#showDetails').modal();
+                    $scope.showFullDetails = function (stepId) {
+                        angular.element('#showDetails' + stepId).modal();
                     };
 
-                    $scope.showHistory = function () {
-                        angular.element('#showHistory').modal();
+                    $scope.showHistory = function (stepId) {
+                        angular.element('#showHistory' + stepId).modal();
                     };
 
                     function graphSteps(steps) {

@@ -44,10 +44,10 @@
                             {{ step.status }}
                         </span>
                         <br/><br/>
-                        <button class="btn btn-success btn-xs" data-ng-click="showFullDetails()">
+                        <button class="btn btn-success btn-xs" data-ng-click="showFullDetails(step.id)">
                             {{ "application.view.batch.fulldetails" | localize }}
                         </button>
-                        <button class="btn btn-info btn-xs" data-ng-click="showHistory()">
+                        <button class="btn btn-info btn-xs" data-ng-click="showHistory(step.id)">
                             {{ "application.view.batch.history" | localize }}
                         </button>
                         <div data-show-status-modal></div>
@@ -61,7 +61,7 @@
                                  data-ng-show="step.status === 'FAILED'">
                                 <b> {{ "application.view.batch.failedstep" | localize }} </b>
                                 <button class="btn btn-danger btn-sm pull-right"
-                                        data-ng-click="showFullDetails()">
+                                        data-ng-click="showFullDetails(step.id)">
                                     {{ 'application.view.batch.statussteperror' | localize }}
                                 </button>
                                 <div class="clearfix"></div>
