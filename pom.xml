@@ -10,87 +10,34 @@
     file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.seedstack</groupId>
-        <artifactId>parent</artifactId>
-        <version>2.0.0</version>
+        <artifactId>parent-internal</artifactId>
+        <version>2.1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>org.seedstack.functions.batch-monitoring</groupId>
-    <artifactId>batch-monitoring-function</artifactId>
-    <version>2.0.1-SNAPSHOT</version>
+    <groupId>org.seedstack.addons</groupId>
+    <artifactId>batch-monitoring</artifactId>
+    <version>2.1.0-M1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <inceptionYear>2014</inceptionYear>
     <properties>
-        <seed.version>2.0.0</seed.version>
-        <seed-spring-extensions.version>2.0.0</seed-spring-extensions.version>
+        <seed.version>2.1.0-M1-SNAPSHOT</seed.version>
+        <spring-bridge.addon.version>2.1.0-M1-SNAPSHOT</spring-bridge.addon.version>
+        <spring.version>4.0.5.RELEASE</spring.version>
+        <spring-batch.version>3.0.5.RELEASE</spring-batch.version>
     </properties>
 
     <modules>
         <module>core</module>
         <module>rest</module>
         <module>web</module>
-        <module>doc</module>
         <module>bom</module>
         <module>demo</module>
     </modules>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.seedstack.seed</groupId>
-                <artifactId>seed-bom</artifactId>
-                <version>${seed.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.seedstack.seed</groupId>
-                <artifactId>seed-spring-extensions-bom</artifactId>
-                <version>${seed-spring-extensions.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.seedstack</groupId>
-                <artifactId>spring-bom</artifactId>
-                <version>${seedstack.poms.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.seedstack</groupId>
-                <artifactId>logging-bom</artifactId>
-                <version>${seedstack.poms.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.seedstack</groupId>
-                <artifactId>java-bom</artifactId>
-                <version>${seedstack.poms.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.seedstack</groupId>
-                <artifactId>commons-bom</artifactId>
-                <version>${seedstack.poms.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.seedstack</groupId>
-                <artifactId>integrationtest-bom</artifactId>
-                <version>${seedstack.poms.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
     <build>
         <pluginManagement>
@@ -119,37 +66,28 @@
                         <includedLicenses>
                             <includedLicense>Apache 2</includedLicense>
                             <includedLicense>BSD</includedLicense>
-                            <includedLicense>CDDL 1.1</includedLicense>
-                            <includedLicense>CDDL + GPLv2 with classpath exception</includedLicense>
-                            <includedLicense>EPL 1.0</includedLicense>
-                            <includedLicense>Indiana</includedLicense>
-                            <includedLicense>LGPL 2.1</includedLicense>
                             <includedLicense>LGPL 3.0</includedLicense>
-                            <includedLicense>MIT</includedLicense>
-                            <includedLicense>MPL 1.1</includedLicense>
+                            <includedLicense>Indiana</includedLicense>
+                            <includedLicense>MIT License</includedLicense>
                             <includedLicense>MPL 2.0</includedLicense>
                             <includedLicense>Public Domain</includedLicense>
-                            <includedLicense>The JSON License</includedLicense>
                             <includedLicense>WTFPL</includedLicense>
 
                             <!-- Some licenses are ignored because they are alternatives to acceptable licenses and the plugin doesn't handle alternate licenses -->
                             <includedLicense>IGNORED_LICENSE</includedLicense>
                         </includedLicenses>
                         <licenseMerges>
-                            <licenseMerge>Apache 2|Apache 2.0</licenseMerge>
-                            <licenseMerge>Apache 2|The Apache Software License, Version 2.0</licenseMerge>
                             <licenseMerge>Apache 2|Apache License, Version 2.0</licenseMerge>
+                            <licenseMerge>Apache 2|The Apache Software License, Version 2.0</licenseMerge>
                             <licenseMerge>Apache 2|Apache License 2.0</licenseMerge>
-                            <licenseMerge>BSD|BSD style</licenseMerge>
+                            <licenseMerge>Apache 2|Apache 2.0</licenseMerge>
                             <licenseMerge>BSD|The New BSD License</licenseMerge>
-                            <licenseMerge>EPL 1.0|Eclipse Public License - v 1.0</licenseMerge>
-                            <licenseMerge>Indiana|Indiana University Extreme! Lab Software License, vesion 1.1.1
-                            </licenseMerge>
-                            <licenseMerge>LGPL 2.1|GNU Lesser General Public License</licenseMerge>
+                            <licenseMerge>BSD|BSD style</licenseMerge>
+                            <licenseMerge>Indiana|Indiana University Extreme! Lab Software License, vesion 1.1.1</licenseMerge>
                             <licenseMerge>LGPL 3.0|GNU Lesser Public License</licenseMerge>
-                            <licenseMerge>MIT|MIT License</licenseMerge>
 
-                            <licenseMerge>IGNORED_LICENSE|GPL2 w/ CPE</licenseMerge>
+                            <licenseMerge>IGNORED_LICENSE|MPL 1.1</licenseMerge>
+                            <licenseMerge>IGNORED_LICENSE|LGPL 2.1</licenseMerge>
                         </licenseMerges>
                     </configuration>
                 </plugin>
@@ -157,33 +95,30 @@
         </pluginManagement>
     </build>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.seedstack.seed</groupId>
-            <artifactId>seed-unittest-support</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
-
     <scm>
-        <url>https://github.com/seedstack/batch-monitoring-function</url>
-        <connection>scm:git:git://github.com/seedstack/batch-monitoring-function.git</connection>
-        <developerConnection>scm:git:git@github.com:seedstack/batch-monitoring-function.git</developerConnection>
+        <url>https://github.com/seedstack/batch-monitoring-addon</url>
+        <connection>scm:git:git://github.com/seedstack/batch-monitoring-addon.git</connection>
+        <developerConnection>scm:git:git@github.com:seedstack/batch-monitoring-addon.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
 
-    <repositories>
-        <repository>
-            <id>sonatype-nexus-staging</id>
-            <name>Sonatype Nexus Staging</name>
-            <url>https://oss.sonatype.org/content/groups/staging</url>
-        </repository>
-    </repositories>
-    <pluginRepositories>
-        <pluginRepository>
-            <id>sonatype-nexus-staging</id>
-            <name>Sonatype Nexus Staging</name>
-            <url>https://oss.sonatype.org/content/groups/staging</url>
-        </pluginRepository>
-    </pluginRepositories>
+    <profiles>
+        <profile>
+            <id>staging</id>
+            <repositories>
+                <repository>
+                    <id>sonatype-nexus-staging</id>
+                    <name>Sonatype Nexus Staging</name>
+                    <url>https://oss.sonatype.org/content/groups/staging</url>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>sonatype-nexus-staging</id>
+                    <name>Sonatype Nexus Staging</name>
+                    <url>https://oss.sonatype.org/content/groups/staging</url>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
+    </profiles>
 </project>

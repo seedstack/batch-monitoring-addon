@@ -12,34 +12,34 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>org.seedstack.functions.batch-monitoring</groupId>
-        <artifactId>batch-monitoring-function</artifactId>
-        <version>2.0.1-SNAPSHOT</version>
+        <groupId>org.seedstack.addons</groupId>
+        <artifactId>batch-monitoring</artifactId>
+        <version>2.1.0-M1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>batch-monitoring-function-bom</artifactId>
+    <artifactId>batch-monitoring-bom</artifactId>
     <packaging>pom</packaging>
 
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>org.seedstack.functions.batch-monitoring</groupId>
-                <artifactId>batch-monitoring-function-core</artifactId>
+                <groupId>org.seedstack.addons</groupId>
+                <artifactId>batch-monitoring-core</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.seedstack.functions.batch-monitoring</groupId>
-                <artifactId>batch-monitoring-function-rest</artifactId>
+                <groupId>org.seedstack.addons</groupId>
+                <artifactId>batch-monitoring-rest</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.seedstack.functions.batch-monitoring</groupId>
-                <artifactId>batch-monitoring-function-web</artifactId>
+                <groupId>org.seedstack.addons</groupId>
+                <artifactId>batch-monitoring-web</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.seedstack.functions.batch-monitoring</groupId>
-                <artifactId>batch-monitoring-function-doc</artifactId>
+                <groupId>org.seedstack.addons</groupId>
+                <artifactId>batch-monitoring-doc</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>

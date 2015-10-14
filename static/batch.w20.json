@@ -2,8 +2,7 @@
     "id": "batch",
     "name": "Seed base fragment",
     "version": "1.0.0",
-    "author": "Adrien LAUER",
-    "description": "batch-monitor showcases of W20 functions",
+    "author": "Aymen ABBES, Kavi RAMYEAD, Adrien LAUER",
 
     "modules": {
         "style": {
