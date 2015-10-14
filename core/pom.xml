@@ -22,6 +22,10 @@
 
     <artifactId>batch-monitoring-core</artifactId>
 
+    <properties>
+        <compatibility.artifactId>batch-monitoring-function-core</compatibility.artifactId>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>

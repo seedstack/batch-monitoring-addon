@@ -29,6 +29,9 @@
         <spring-bridge.addon.version>2.1.0-M1-SNAPSHOT</spring-bridge.addon.version>
         <spring.version>4.0.5.RELEASE</spring.version>
         <spring-batch.version>3.0.5.RELEASE</spring-batch.version>
+
+        <compatibility.groupId>org.seedstack.functions.batch-monitoring</compatibility.groupId>
+        <compatibility.version>2.0.0</compatibility.version>
     </properties>
 
     <modules>

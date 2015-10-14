@@ -21,6 +21,10 @@
 
     <artifactId>batch-monitoring-rest</artifactId>
 
+    <properties>
+        <compatibility.artifactId>batch-monitoring-function-rest</compatibility.artifactId>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.seedstack.addons</groupId>

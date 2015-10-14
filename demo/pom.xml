@@ -21,6 +21,10 @@
     <artifactId>batch-monitoring-demo</artifactId>
     <packaging>war</packaging>
 
+    <properties>
+        <compatibility.skip>true</compatibility.skip>
+    </properties>
+
     <build>
         <pluginManagement>
             <plugins>
