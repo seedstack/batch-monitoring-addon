@@ -12,7 +12,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>org.seedstack.addons</groupId>
+        <groupId>org.seedstack.addons.batch-monitoring</groupId>
         <artifactId>batch-monitoring</artifactId>
         <version>2.1.0-M1-SNAPSHOT</version>
     </parent>
@@ -25,7 +25,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.seedstack.addons</groupId>
+            <groupId>org.seedstack.addons.batch-monitoring</groupId>
             <artifactId>batch-monitoring-core</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -35,7 +35,7 @@
             <version>${seed.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.seedstack.addons</groupId>
+            <groupId>org.seedstack.addons.spring-bridge</groupId>
             <artifactId>spring-bridge-core</artifactId>
             <version>${spring-bridge.addon.version}</version>
         </dependency>
