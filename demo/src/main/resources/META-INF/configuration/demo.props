@@ -24,7 +24,7 @@ monitoring = seed:monitoring:batch:read
 [org.seedstack.seed.security.urls]
 /** = authcBasic
 
-[org.seedstack.batch.monitoring.datasource]
+[org.seedstack.monitoring.batch.datasource]
 driver = org.hsqldb.jdbcDriver
 url = jdbc:hsqldb:mem:demo
 user = sa
