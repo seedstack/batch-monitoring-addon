@@ -1,8 +1,8 @@
 ---
 title: "Integration"
-addon: "Batch monitoring" 
+addon: "Monitoring" 
 menu:
-    BatchMonitoringAddon:
+    MonitoringAddon:
         weight: 20
 ---
 

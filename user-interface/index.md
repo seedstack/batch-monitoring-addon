@@ -1,8 +1,8 @@
 ---
 title: "User interface"
-addon: "Batch monitoring" 
+addon: "Monitoring" 
 menu:
-    BatchMonitoringAddon:
+    MonitoringAddon:
         weight: 30
 ---
 
