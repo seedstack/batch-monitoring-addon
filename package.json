@@ -1,7 +1,7 @@
 {
-  "name": "seedstack-batch-monitoring",
+  "name": "seedstack-monitoring-addon",
   "version": "2.1.0",
-  "description": "SeedStack batch monitoring add-on",
+  "description": "SeedStack monitoring add-on",
   "license": "MPL 2.0",
   "contributors": [
     {

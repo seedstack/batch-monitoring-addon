@@ -48,7 +48,7 @@ module.exports = function (grunt) {
                 },
                 dist : {
                     src  : '<%= concat.static.dist.dest %>',
-                    dest : 'dist/batch-monitoring-function.min.js'
+                    dest : 'dist/seedstack-monitoring-addon.min.js'
                 }
             }
         }

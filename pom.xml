@@ -94,9 +94,9 @@
     </build>
 
     <scm>
-        <url>https://github.com/seedstack/batch-monitoring-addon</url>
-        <connection>scm:git:git://github.com/seedstack/batch-monitoring-addon.git</connection>
-        <developerConnection>scm:git:git@github.com:seedstack/batch-monitoring-addon.git</developerConnection>
+        <url>https://github.com/seedstack/monitoring-addon</url>
+        <connection>scm:git:git://github.com/seedstack/monitoring-addon.git</connection>
+        <developerConnection>scm:git:git@github.com:seedstack/monitoring-addon.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
 

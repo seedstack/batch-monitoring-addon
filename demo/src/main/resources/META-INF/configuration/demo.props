@@ -7,7 +7,7 @@
 #
 
 [org.seedstack.seed.core]
-application-id = batch-monitoring-demo
+application-id = monitoring-demo
 
 [org.seedstack.seed.web]
 resources.minification-support = false

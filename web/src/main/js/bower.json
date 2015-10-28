@@ -1,6 +1,6 @@
 {
-  "name": "seedstack-batch-monitoring-function-web",
+  "name": "seedstack-monitoring-addon-web",
   "devDependencies": {
-    "seedstack-batch-monitoring": "../../.."
+    "seedstack-monitoring-addon": "../../.."
   }
 }

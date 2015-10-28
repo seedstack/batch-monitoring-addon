@@ -53,8 +53,8 @@
                         </goals>
                         <configuration>
                             <target>
-                                <copy todir="${project.build.directory}/classes/META-INF/resources/resources/bower_components/seedstack-batch-monitoring">
-                                    <fileset dir="${project.build.directory}/grunt/bower_components/seedstack-batch-monitoring" />
+                                <copy todir="${project.build.directory}/classes/META-INF/resources/resources/bower_components/seedstack-monitoring-addon">
+                                    <fileset dir="${project.build.directory}/grunt/bower_components/seedstack-monitoring-addon" />
                                 </copy>
                             </target>
                         </configuration>

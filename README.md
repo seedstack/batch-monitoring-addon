@@ -1,5 +1,5 @@
-# SeedStack batch monitoring function 
-[![Build status](https://travis-ci.org/seedstack/batch-monitoring-function.svg?branch=master)](https://travis-ci.org/seedstack/batch-monitoring-function) [![Coverage Status](https://coveralls.io/repos/seedstack/batch-monitoring-function/badge.svg?branch=master)](https://coveralls.io/r/seedstack/batch-monitoring-function?branch=master) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.seedstack.functions.batch-monitoring/batch-monitoring-function/badge.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/org.seedstack.functions.batch-monitoring/batch-monitoring-function)
+# SeedStack monitoring add-on 
+[![Build status](https://travis-ci.org/seedstack/monitoring-addon.svg?branch=master)](https://travis-ci.org/seedstack/monitoring-addon) [![Coverage Status](https://coveralls.io/repos/seedstack/monitoring-addon/badge.svg?branch=master)](https://coveralls.io/r/seedstack/monitoring-addon?branch=master) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.seedstack.addons.monitoring/monitoring/badge.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/org.seedstack.addons.monitoring/monitoring)
 
 Monitoring of Spring batch jobs in a Web UI.
 
