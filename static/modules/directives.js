@@ -17,7 +17,7 @@ define([
         '[text]!{batch}/templates/batch-tree.html',
         '[text]!{batch}/templates/breadcrumb.html',
 
-        '{w20-ui}/modules/notifications',
+        '{w20-core}/modules/notifications',
 
         '{w20-dataviz}/modules/charts/discretebar',
         '{w20-dataviz}/modules/charts/pie',
