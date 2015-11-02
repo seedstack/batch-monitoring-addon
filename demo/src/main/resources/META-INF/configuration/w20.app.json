@@ -4,7 +4,8 @@
       "culture": {},
       "security": {
         "autoLogin": true
-      }
+      },
+      "notifications":{}
     }
   }
 }
