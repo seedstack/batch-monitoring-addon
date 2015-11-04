@@ -7,7 +7,7 @@
  */
 package org.seedstack.monitoring.batch.internal.rest.stepexecution;
 
-import org.seedstack.seed.security.api.annotations.RequiresPermissions;
+import org.seedstack.seed.security.RequiresPermissions;
 import org.springframework.batch.admin.history.StepExecutionHistory;
 import org.springframework.batch.admin.service.JobService;
 import org.springframework.batch.admin.service.NoSuchStepExecutionException;
