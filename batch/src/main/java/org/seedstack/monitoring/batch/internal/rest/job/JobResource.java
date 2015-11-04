@@ -10,7 +10,7 @@ package org.seedstack.monitoring.batch.internal.rest.job;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Collections2;
 import org.seedstack.monitoring.batch.internal.rest.jobexecution.JobExecutionRepresentation;
-import org.seedstack.seed.security.api.annotations.RequiresPermissions;
+import org.seedstack.seed.security.RequiresPermissions;
 import org.springframework.batch.admin.service.JobService;
 import org.springframework.batch.admin.web.JobExecutionInfo;
 import org.springframework.batch.admin.web.JobInfo;
