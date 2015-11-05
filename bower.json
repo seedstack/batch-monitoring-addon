@@ -20,6 +20,6 @@
     "package.json"
   ],
   "dependencies": {
-    "w20": "~2.0.0"
+    "w20": "~2.0"
   }
 }
