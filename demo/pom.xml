@@ -74,6 +74,21 @@
             <version>2.1.0-M1-SNAPSHOT</version>
         </dependency>
         <dependency>
+            <groupId>org.seedstack.addons.w20</groupId>
+            <artifactId>w20-bridge-web-dataviz</artifactId>
+            <version>2.1.0-M1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seedstack.addons.w20</groupId>
+            <artifactId>w20-bridge-web-bootstrap-3</artifactId>
+            <version>2.1.0-M1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seedstack.addons.w20</groupId>
+            <artifactId>w20-bridge-web-business-theme</artifactId>
+            <version>2.1.0-M1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
             <groupId>org.hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
             <version>2.3.3</version>

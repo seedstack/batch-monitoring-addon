@@ -1,6 +1,9 @@
 {
   "w20-core": {
     "modules": {
+      "application": {
+        "home": "/w20-monitoring-addon/jobs-list"
+      },
       "culture": {},
       "security": {
         "autoLogin": true
