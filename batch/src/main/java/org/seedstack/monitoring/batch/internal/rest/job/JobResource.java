@@ -40,7 +40,7 @@ import java.util.regex.Pattern;
  *
  * @author aymen.abbes@ext.mpsa.com
  */
-@Path("/jobs")
+@Path("/seed-monitoring/jobs")
 public class JobResource {
 
     /**
