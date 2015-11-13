@@ -6,14 +6,14 @@ jdk: oraclejdk8
 
 node_js: "0.12"
 
-before_install: npm install -g bower grunt-cli
-
 notifications:
   irc: "chat.freenode.net#seedstack-dev"
   
 cache:
   directories:
     - "$HOME/.m2/repository"
+
+before_install: npm install -g bower grunt-cli
 
 install:
   - rm ~/.m2/settings.xml

@@ -31,7 +31,7 @@ import java.util.TimeZone;
  *
  * @author aymen.abbes@ext.mpsa.com
  */
-@Path("/jobs/executions/{jobExecutionId}/steps")
+@Path("/seed-monitoring/jobs/executions/{jobExecutionId}/steps")
 public class StepExecutionResource {
     @Inject
     @Named("jobService")

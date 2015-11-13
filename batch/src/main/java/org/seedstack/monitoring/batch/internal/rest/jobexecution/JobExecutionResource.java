@@ -33,7 +33,7 @@ import java.util.GregorianCalendar;
  *
  * @author aymen.abbes@ext.mpsa.com
  */
-@Path("/jobs/{jobName}/job-executions")
+@Path("/seed-monitoring/jobs/{jobName}/job-executions")
 public class JobExecutionResource {
     @Inject
     @Named("jobService")

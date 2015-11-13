@@ -35,7 +35,7 @@ import java.util.TimeZone;
  *
  * @author aymen.abbes@ext.mpsa.com
  */
-@Path("/jobs/{jobName}/job-instances")
+@Path("/seed-monitoring/jobs/{jobName}/job-instances")
 public class JobInstanceResource {
     /**
      * The job service.
