@@ -4,7 +4,9 @@ addon: "Monitoring"
 repo: "https://github.com/seedstack/monitoring-addon"
 author: "SeedStack"
 description: "Provides self-monitoring Web UI for applications."
-min-version: "15.7+"
+min-version: "15.11+"
+backend: true
+frontend: "responsive"
 menu:
     MonitoringAddon:
         weight: 10
