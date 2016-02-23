@@ -1,25 +1,36 @@
 ---
-title: "Overview"
-addon: "Monitoring"
+title: "Basics"
+name: "Monitoring"
 repo: "https://github.com/seedstack/monitoring-addon"
 author: "SeedStack"
 description: "Provides self-monitoring Web UI for applications."
 min-version: "15.11+"
 backend: true
 frontend: "responsive"
+weight: -1
+tags:
+    - "monitoring"
+zones:
+    - Addons
 menu:
     MonitoringAddon:
         weight: 10
 ---
 
-The SeedStack batch monitoring add-on provides a Web user interface to monitor the execution of Spring Batch jobs. You
-can use it to inspect jobs, executions and steps. Execution statistics are provided.
+The SeedStack monitoring add-on provides modules exposing API which report the monitoring status of your application:
+
+* [Batch monitoring module](batch) which reports upon the status of Spring batch jobs.
+
+Other monitoring modules will be provided in the future.
+
+# Monitoring UI
+
+You can write your custom UI or benefit from the built-in W20 UI provided by this add-on. To do so, add the following dependency to
+your Web application:
 
 {{< dependency g="org.seedstack.addons.monitoring" a="monitoring-web" >}}
 
-If you only want the REST API, use the following dependency instead:
-
-    <dependency>
-    	<groupId>org.seedstack.addons.monitoring</groupId>
-    	<artifactId>monitoring-batch</artifactId>
-    </dependency>
+{{% callout info %}}
+This dependency will not provide the monitoring itself, only the UI. You must also add one or more monitoring modules
+provided by this add-on.
+{{% /callout %}}
