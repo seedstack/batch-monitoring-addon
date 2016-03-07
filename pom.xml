@@ -23,11 +23,11 @@
     <packaging>pom</packaging>
 
     <properties>
-        <seed.version>2.1.0</seed.version>
+        <seed.version>2.2.0</seed.version>
         <w20-bridge.addon.version>2.2.2</w20-bridge.addon.version>
-        <spring-bridge.addon.version>2.1.0</spring-bridge.addon.version>
-        <spring.version>4.0.5.RELEASE</spring.version>
-        <spring-batch.version>3.0.5.RELEASE</spring-batch.version>
+        <spring-bridge.addon.version>2.2.0</spring-bridge.addon.version>
+        <spring.version>4.2.5.RELEASE</spring.version>
+        <spring-batch.version>3.0.6.RELEASE</spring-batch.version>
 
         <compatibility.version>2.1.0</compatibility.version>
 
