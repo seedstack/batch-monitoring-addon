@@ -18,6 +18,14 @@
 
     <artifactId>monitoring-web</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.seedstack.addons.w20</groupId>
+            <artifactId>w20-bridge-web-dataviz</artifactId>
+            <version>${w20-bridge.addon.version}</version>
+        </dependency>
+    </dependencies>
+
     <build>
         <plugins>
             <plugin>
