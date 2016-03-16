@@ -23,9 +23,9 @@
     <packaging>pom</packaging>
 
     <properties>
-        <seed.version>2.2.0</seed.version>
-        <w20-bridge.addon.version>2.2.2</w20-bridge.addon.version>
-        <spring-bridge.addon.version>2.2.0</spring-bridge.addon.version>
+        <seed.version>2.3.0-SNAPSHOT</seed.version>
+        <w20-bridge.addon.version>2.3.0-SNAPSHOT</w20-bridge.addon.version>
+        <spring-bridge.addon.version>2.2.1-SNAPSHOT</spring-bridge.addon.version>
         <spring.version>4.2.5.RELEASE</spring.version>
         <spring-batch.version>3.0.6.RELEASE</spring-batch.version>
 
