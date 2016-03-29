@@ -1,6 +1,7 @@
 # Version 2.1.1 (?)
 
 * [chg] Update frontend to [2.1.1](https://github.com/seedstack/w20-monitoring-addon/releases/tag/v2.1.1)
+* [chg] Update for SeedStack 16.4
 * [fix] Fix missing dependency to [w20-bridge-web-dataviz 2.2.2](https://github.com/seedstack/w20-bridge-addon/releases/tag/v2.2.2)
 
 # Version 2.1.0 (2015-11-26)
