@@ -66,6 +66,7 @@
                         <includedLicenses>
                             <includedLicense>Apache 2</includedLicense>
                             <includedLicense>BSD</includedLicense>
+                            <includedLicense>CDDL</includedLicense>
                             <includedLicense>LGPL 3.0</includedLicense>
                             <includedLicense>Indiana</includedLicense>
                             <includedLicense>MIT License</includedLicense>
@@ -83,6 +84,7 @@
                             <licenseMerge>Apache 2|Apache 2.0</licenseMerge>
                             <licenseMerge>BSD|The New BSD License</licenseMerge>
                             <licenseMerge>BSD|BSD style</licenseMerge>
+                            <licenseMerge>CDDL|CDDL + GPLv2 with classpath exception</licenseMerge>
                             <licenseMerge>Indiana|Indiana University Extreme! Lab Software License, vesion 1.1.1</licenseMerge>
                             <licenseMerge>LGPL 3.0|GNU Lesser Public License</licenseMerge>
 
