@@ -2,9 +2,9 @@
 title: "Basics"
 name: "Monitoring"
 repo: "https://github.com/seedstack/monitoring-addon"
-author: "SeedStack"
+date: 2015-11-15
+author: Aymen ABBES
 description: "Provides self-monitoring Web UI for applications."
-min-version: "15.11+"
 backend: true
 frontend: "responsive"
 weight: -1
