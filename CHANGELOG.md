@@ -1,4 +1,4 @@
-# Version 2.1.1 (?)
+# Version 2.1.1 (2016-04-26)
 
 * [chg] Update frontend to [2.1.1](https://github.com/seedstack/w20-monitoring-addon/releases/tag/v2.1.1)
 * [chg] Update for SeedStack 16.4
