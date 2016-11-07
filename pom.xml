@@ -23,19 +23,20 @@
     <packaging>pom</packaging>
 
     <properties>
-        <seed.version>2.3.0</seed.version>
-        <w20-bridge.addon.version>2.3.0</w20-bridge.addon.version>
+        <seed.version>2.3.2</seed.version>
+        <w20-bridge.addon.version>2.3.2</w20-bridge.addon.version>
         <spring-bridge.addon.version>2.2.1</spring-bridge.addon.version>
         <spring.version>4.2.5.RELEASE</spring.version>
         <spring-batch.version>3.0.6.RELEASE</spring-batch.version>
 
-        <compatibility.version>2.1.0</compatibility.version>
+        <compatibility.version>2.1.1-SNAPSHOT</compatibility.version>
 
         <bintray.package>monitoring-addon</bintray.package>
     </properties>
 
     <modules>
         <module>batch</module>
+        <module>mqtt</module>
         <module>web</module>
     </modules>
 
@@ -67,12 +68,16 @@
                             <includedLicense>Apache 2</includedLicense>
                             <includedLicense>BSD</includedLicense>
                             <includedLicense>CDDL</includedLicense>
+                            <includedLicense>CDDL 1.1</includedLicense>
+                            <includedLicense>GPL2 w/ CPE</includedLicense>
                             <includedLicense>LGPL 3.0</includedLicense>
                             <includedLicense>Indiana</includedLicense>
                             <includedLicense>MIT License</includedLicense>
+                            <includedLicense>CDDL+GPL License</includedLicense>
                             <includedLicense>MPL 2.0</includedLicense>
                             <includedLicense>Public Domain</includedLicense>
                             <includedLicense>WTFPL</includedLicense>
+                            <includedLicense>License Eclipse</includedLicense>
 
                             <!-- Some licenses are ignored because they are alternatives to acceptable licenses and the plugin doesn't handle alternate licenses -->
                             <includedLicense>IGNORED_LICENSE</includedLicense>
@@ -87,6 +92,7 @@
                             <licenseMerge>CDDL|CDDL + GPLv2 with classpath exception</licenseMerge>
                             <licenseMerge>Indiana|Indiana University Extreme! Lab Software License, vesion 1.1.1</licenseMerge>
                             <licenseMerge>LGPL 3.0|GNU Lesser Public License</licenseMerge>
+                            <licenseMerge>License Eclipse|Eclipse Public License - Version 1.0</licenseMerge>
 
                             <licenseMerge>IGNORED_LICENSE|MPL 1.1</licenseMerge>
                             <licenseMerge>IGNORED_LICENSE|LGPL 2.1</licenseMerge>
