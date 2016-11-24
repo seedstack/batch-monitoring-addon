@@ -1,6 +1,6 @@
 {
   "name": "seedstack-monitoring-addon-web",
   "devDependencies": {
-    "w20-monitoring-addon": "2.1.2"
+    "w20-monitoring-addon": "#master"
   }
 }
