@@ -29,7 +29,7 @@
         <spring.version>4.2.5.RELEASE</spring.version>
         <spring-batch.version>3.0.6.RELEASE</spring-batch.version>
 
-        <compatibility.version>2.1.1-SNAPSHOT</compatibility.version>
+        <compatibility.version>2.1.0</compatibility.version>
 
         <bintray.package>monitoring-addon</bintray.package>
     </properties>
