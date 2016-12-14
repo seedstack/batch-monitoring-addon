@@ -27,6 +27,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class ClientResourceTest extends AbstractSeedWebIT {
 
+    private static final String LOGIN = "reader";
+
+    private static final String PASSWORD = "password";
+
     @ArquillianResource
     private URL baseURL;
 
@@ -48,7 +52,7 @@ public class ClientResourceTest extends AbstractSeedWebIT {
     @RunAsClient
     @Test
     public void testGetClients() {
-        Response response = expect().statusCode(200).when().get(baseURL.toString() + "seed-monitoring/mqtt/clients");
+        Response response = expect().statusCode(200).given().auth().basic(LOGIN, PASSWORD).when().get(baseURL.toString() + "seed-monitoring/mqtt/clients");
         int resultSize = from(response.asString()).get("resultSize");
         assertThat(resultSize).isEqualTo(1);
     }
@@ -56,7 +60,7 @@ public class ClientResourceTest extends AbstractSeedWebIT {
     @RunAsClient
     @Test
     public void testGetClient() {
-        Response response = expect().statusCode(200).when().get(baseURL.toString() + "seed-monitoring/mqtt/clients/client_test");
+        Response response = expect().statusCode(200).given().auth().basic(LOGIN, PASSWORD).when().get(baseURL.toString() + "seed-monitoring/mqtt/clients/client_test");
         String clientId = from(response.asString()).get("clientId");
         assertThat(clientId).isEqualTo("client_test");
     }
@@ -64,6 +68,6 @@ public class ClientResourceTest extends AbstractSeedWebIT {
     @RunAsClient
     @Test
     public void testGetClientNotFound() {
-        expect().statusCode(404).when().get(baseURL.toString() + "seed-monitoring/mqtt/clients/client_fake");
+        expect().statusCode(404).given().auth().basic(LOGIN, PASSWORD).when().get(baseURL.toString() + "seed-monitoring/mqtt/clients/client_fake");
     }
 }

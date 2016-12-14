@@ -6,6 +6,21 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 #
 
+[org.seedstack.seed.security.urls]
+/** = authcBasic
+
+[org.seedstack.seed.security]
+realms = ConfigurationRealm
+
+ConfigurationRealm.role-mapping = ConfigurationRoleMapping
+ConfigurationRealm.role-permission-resolver = ConfigurationRolePermissionResolver
+
+[org.seedstack.seed.security.users]
+reader = password
+
+[org.seedstack.seed.security.roles]
+seed-monitoring-mqtt.reader = *
+
 [org.seedstack.mqtt]
 clients = client_test
 
