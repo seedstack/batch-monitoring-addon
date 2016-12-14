@@ -87,6 +87,12 @@
         <!--TESTS-->
         <dependency>
             <groupId>org.seedstack.seed</groupId>
+            <artifactId>seed-web-security</artifactId>
+            <version>${seed.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.seedstack.seed</groupId>
             <artifactId>seed-testing</artifactId>
             <version>${seed.version}</version>
             <scope>test</scope>

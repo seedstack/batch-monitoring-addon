@@ -16,6 +16,7 @@ import org.seedstack.mqtt.spi.MqttClientInfo;
 import org.seedstack.mqtt.spi.MqttInfo;
 import org.seedstack.mqtt.spi.MqttPoolConfiguration;
 import org.seedstack.seed.rest.Rel;
+import org.seedstack.seed.security.RequiresPermissions;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;
@@ -48,6 +49,7 @@ public class ClientResource {
     @GET
     @Rel(value = Rels.CLIENTS, home = true)
     @Produces({MediaType.APPLICATION_JSON, "application/hal+json"})
+    @RequiresPermissions("seed:monitoring:mqtt:read")
     public Response getClients() {
         if (mqttInfo.getClientNames() != null && !mqttInfo.getClientNames().isEmpty()) {
             return clientListRepresentation();
@@ -59,6 +61,7 @@ public class ClientResource {
     @Path("/{clientId}")
     @Rel(value = Rels.CLIENT)
     @Produces({MediaType.APPLICATION_JSON, "application/hal+json"})
+    @RequiresPermissions("seed:monitoring:mqtt:read")
     public Response getClient() {
         boolean clientExists = clientExists(clientId);
         if (clientExists) {
