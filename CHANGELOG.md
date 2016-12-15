@@ -1,6 +1,11 @@
+# Version 2.2.0 (2016-12-15)
+
+* [chg] Update frontend to [2.2.1](https://github.com/seedstack/w20-monitoring-addon/releases/tag/v2.2.1)
+
 # Version 2.2.0 (2016-11-24)
 
 * [new] Add MQTT monitoring module.
+* [chg] Update frontend to [2.2.0](https://github.com/seedstack/w20-monitoring-addon/releases/tag/v2.2.0)
 
 # Version 2.1.1 (2016-04-26)
 
