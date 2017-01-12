@@ -1,0 +1,29 @@
+#
+# Copyright (c) 2013-2016, The SeedStack authors <http://seedstack.org>
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+#
+
+security:
+  users:
+    reader: password
+  roles:
+    seed-monitoring-mqtt.reader: '*'
+  web:
+    urls:
+      -
+        pattern: /**
+        filters: authcBasic
+mqtt:
+  clients:
+    client_test:
+      serverUri: tcp://localhost:1885
+      clientId: client_test
+      reconnectionInterval: 5
+      pool:
+        coreSize: 5
+        maxSize: 5
+        queueSize: 10
+        keepAlive: 60

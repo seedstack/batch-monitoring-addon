@@ -14,7 +14,7 @@ import com.google.inject.name.Names;
 import org.eclipse.paho.client.mqttv3.IMqttClient;
 import org.seedstack.mqtt.spi.MqttClientInfo;
 import org.seedstack.mqtt.spi.MqttInfo;
-import org.seedstack.mqtt.spi.MqttPoolConfiguration;
+import org.seedstack.mqtt.spi.MqttPoolInfo;
 import org.seedstack.seed.rest.Rel;
 import org.seedstack.seed.security.RequiresPermissions;
 
@@ -29,22 +29,16 @@ import java.util.List;
 
 @Path("/seed-monitoring/mqtt{p:/?}{instance:\\w*}/clients")
 public class ClientResource {
-
+    private static final String CLIENT_ID = "clientId";
+    private static final boolean TRAILING_SLASH = true;
     @PathParam("instance")
     private String instance;
-
-    private static final String CLIENT_ID = "clientId";
-
-    private static final boolean TRAILING_SLASH = true;
-
-    @Inject
-    private MqttInfo mqttInfo;
-
-    @Inject
-    private Injector injector;
-
     @PathParam(CLIENT_ID)
     private String clientId;
+    @Inject
+    private MqttInfo mqttInfo;
+    @Inject
+    private Injector injector;
 
     @GET
     @Rel(value = Rels.CLIENTS, home = true)
@@ -108,12 +102,12 @@ public class ClientResource {
                 .reconnectionMode(ci.getMqttReconnectionMode())
                 .self(getValuedPath(TRAILING_SLASH) + clientId);
 
-        MqttPoolConfiguration poolConf;
-        if ((poolConf = ci.getMqttPoolConfiguration()) != null) {
-            client.poolCoreSize(poolConf.getCoreSize())
-                    .poolKeepAlive(poolConf.getKeepAlive())
-                    .poolMaxSize(poolConf.getMaxSize())
-                    .poolQueueSize(poolConf.getQueueSize());
+        MqttPoolInfo poolInfo;
+        if ((poolInfo = ci.getMqttPoolInfo()) != null) {
+            client.poolCoreSize(poolInfo.getCoreSize())
+                    .poolKeepAlive(poolInfo.getKeepAlive())
+                    .poolMaxSize(poolInfo.getMaxSize())
+                    .poolQueueSize(poolInfo.getQueueSize());
         }
         return Response.ok(client).build();
     }

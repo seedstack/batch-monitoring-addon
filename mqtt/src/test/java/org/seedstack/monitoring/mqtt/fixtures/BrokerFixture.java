@@ -19,7 +19,7 @@ public class BrokerFixture {
     private static final Server server = new Server();
 
     public static void startBroker() {
-        startServer(server, "/configMqttServer.props");
+        startServer(server, "/configMqttServer.conf");
     }
 
     private static void startServer(Server server, String configFile) {

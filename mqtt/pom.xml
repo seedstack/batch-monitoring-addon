@@ -13,21 +13,10 @@
     <parent>
         <groupId>org.seedstack.addons.monitoring</groupId>
         <artifactId>monitoring</artifactId>
-        <version>2.2.1-SNAPSHOT</version>
+        <version>3.0.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>monitoring-mqtt</artifactId>
-
-    <properties>
-        <arquillian-composite.version>2.4.0</arquillian-composite.version>
-        <rest-assured.version>3.0.1</rest-assured.version>
-        <junit.version>4.12</junit.version>
-        <moquette-broker.version>0.8</moquette-broker.version>
-        <mqtt.version>1.2.0</mqtt.version>
-        <paho.version>1.1.0</paho.version>
-
-        <compatibility.skip>true</compatibility.skip>
-    </properties>
 
     <repositories>
         <repository>
@@ -43,12 +32,6 @@
     </repositories>
 
     <dependencies>
-        <!--SEED-->
-        <dependency>
-            <groupId>org.seedstack.seed</groupId>
-            <artifactId>seed-rest-specs</artifactId>
-            <version>${seed.version}</version>
-        </dependency>
         <dependency>
             <groupId>org.seedstack.seed</groupId>
             <artifactId>seed-web-core</artifactId>
@@ -61,14 +44,14 @@
         </dependency>
         <dependency>
             <groupId>org.seedstack.seed</groupId>
-            <artifactId>seed-rest-jersey2</artifactId>
+            <artifactId>seed-rest-specs</artifactId>
             <version>${seed.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.seedstack.addons.mqtt</groupId>
             <artifactId>mqtt</artifactId>
-            <version>${mqtt.version}</version>
+            <version>${mqtt.addon.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -80,7 +63,7 @@
         <dependency>
             <groupId>javax.ws.rs</groupId>
             <artifactId>javax.ws.rs-api</artifactId>
-            <version>${javax.ws.rs-api.version}</version>
+            <version>${javax.ws.rs.version}</version>
             <scope>provided</scope>
         </dependency>
 
@@ -94,6 +77,12 @@
         <dependency>
             <groupId>org.seedstack.seed</groupId>
             <artifactId>seed-testing</artifactId>
+            <version>${seed.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.seedstack.seed</groupId>
+            <artifactId>seed-rest-jersey2</artifactId>
             <version>${seed.version}</version>
             <scope>test</scope>
         </dependency>
@@ -116,13 +105,13 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>io.rest-assured</groupId>
+            <groupId>com.jayway.restassured</groupId>
             <artifactId>rest-assured</artifactId>
             <version>${rest-assured.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>io.rest-assured</groupId>
+            <groupId>com.jayway.restassured</groupId>
             <artifactId>json-path</artifactId>
             <version>${rest-assured.version}</version>
             <scope>test</scope>
@@ -130,8 +119,14 @@
         <dependency>
             <groupId>org.seedstack.poms</groupId>
             <artifactId>arquillian-composite</artifactId>
-            <version>${arquillian-composite.version}</version>
+            <version>${poms.version}</version>
             <type>pom</type>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
