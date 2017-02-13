@@ -1,6 +1,7 @@
 ---
 title: "Batch monitoring"
-name: "Monitoring"
+parent: "Monitoring"
+weight: -1
 zones:
     - Addons
 tags:
