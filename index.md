@@ -19,7 +19,7 @@ menu:
 
 The SeedStack monitoring add-on provides modules exposing API which report the monitoring status of your application:
 
-* [Batch monitoring module](batch) which reports upon the status of Spring batch jobs.
+* [Batch monitoring module]({{< ref "batch.md" >}}) which reports upon the status of Spring batch jobs.
 
 Other monitoring modules will be provided in the future.
 
