@@ -7,10 +7,13 @@
  */
 package org.seedstack.monitoring.mqtt.internal.rest.clients;
 
+final class Rels {
 
-public final class Rels {
+    static final String CLIENTS = "clients";
 
-    public static final String CLIENTS = "clients";
+    static final String CLIENT = "client";
 
-    public static final String CLIENT = "client";
+    static final String INSTANCE_CLIENTS = "instance/clients";
+
+    static final String INSTANCE_CLIENT = "instance/client";
 }
