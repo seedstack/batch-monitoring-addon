@@ -2,6 +2,10 @@
 
 * [brk] Update to new configuration system.
 
+# Version 2.2.2 (2017-02-23)
+
+* [fix] Fix building of HAL links URL.
+
 # Version 2.2.1 (2016-12-15)
 
 * [chg] Update frontend to [2.2.1](https://github.com/seedstack/w20-monitoring-addon/releases/tag/v2.2.1)

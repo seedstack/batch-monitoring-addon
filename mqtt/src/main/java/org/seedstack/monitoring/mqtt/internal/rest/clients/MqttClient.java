@@ -9,14 +9,14 @@ package org.seedstack.monitoring.mqtt.internal.rest.clients;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.google.common.collect.Lists;
+import org.seedstack.seed.rest.RelRegistry;
 import org.seedstack.seed.rest.hal.HalRepresentation;
-import org.seedstack.seed.rest.hal.Link;
 
 import java.util.Collections;
 import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-final class Client extends HalRepresentation {
+final class MqttClient extends HalRepresentation {
 
     private String clientId;
 
@@ -46,29 +46,41 @@ final class Client extends HalRepresentation {
 
     private Integer poolKeepAlive;
 
-    private Client() {
+    private MqttClient() {
     }
 
-    private Client(String clientId, boolean connected) {
+    private MqttClient(RelRegistry relRegistry, String clientId) {
         this.clientId = clientId;
+        self(relRegistry.uri(Rels.CLIENT).set("clientId", clientId));
+    }
+
+    private MqttClient(RelRegistry relRegistry, String clientId, String instanceId) {
+        this.clientId = clientId;
+        self(relRegistry.uri(Rels.INSTANCE_CLIENT).set("clientId", clientId).set("instanceId", instanceId));
+    }
+
+    static MqttClient create(RelRegistry relRegistry, String clientId) {
+        return new MqttClient(relRegistry, clientId);
+    }
+
+    static MqttClient create(RelRegistry relRegistry, String clientId, String instanceId) {
+        return new MqttClient(relRegistry, clientId, instanceId);
+    }
+
+    MqttClient connected(boolean connected) {
         this.connected = connected;
+        return this;
     }
 
-    public static Client create(String clientId, boolean connected) {
-        return new Client(clientId, connected);
-    }
-
-    Client serverURIs(String... serverURIs) {
+    MqttClient serverURIs(String... serverURIs) {
         if (this.serverURIs == null) {
             this.serverURIs = Lists.newArrayList();
         }
-
-
         Collections.addAll(this.serverURIs, serverURIs);
         return this;
     }
 
-    Client topics(String... topics) {
+    MqttClient topics(String... topics) {
         if (this.topics == null) {
             this.topics = Lists.newArrayList();
         }
@@ -76,52 +88,52 @@ final class Client extends HalRepresentation {
         return this;
     }
 
-    Client reconnectionMode(String reconnectionMode) {
+    MqttClient reconnectionMode(String reconnectionMode) {
         this.reconnectionMode = reconnectionMode;
         return this;
     }
 
-    Client reconnectionInterval(int reconnectionInterval) {
+    MqttClient reconnectionInterval(int reconnectionInterval) {
         this.reconnectionInterval = reconnectionInterval;
         return this;
     }
 
-    Client keepAliveInterval(int keepAliveInterval) {
+    MqttClient keepAliveInterval(int keepAliveInterval) {
         this.keepAliveInterval = keepAliveInterval;
         return this;
     }
 
-    Client cleanSession(boolean cleanSession) {
+    MqttClient cleanSession(boolean cleanSession) {
         this.cleanSession = cleanSession;
         return this;
     }
 
-    Client mqttVersion(int mqttVersion) {
+    MqttClient mqttVersion(int mqttVersion) {
         this.mqttVersion = mqttVersion;
         return this;
     }
 
-    Client connectionTimeout(int connectionTimeout) {
+    MqttClient connectionTimeout(int connectionTimeout) {
         this.connectionTimeout = connectionTimeout;
         return this;
     }
 
-    Client poolCoreSize(int poolCoreSize) {
+    MqttClient poolCoreSize(int poolCoreSize) {
         this.poolCoreSize = poolCoreSize;
         return this;
     }
 
-    Client poolMaxSize(int poolMaxSize) {
+    MqttClient poolMaxSize(int poolMaxSize) {
         this.poolMaxSize = poolMaxSize;
         return this;
     }
 
-    Client poolQueueSize(int poolQueueSize) {
+    MqttClient poolQueueSize(int poolQueueSize) {
         this.poolQueueSize = poolQueueSize;
         return this;
     }
 
-    Client poolKeepAlive(int poolKeepAlive) {
+    MqttClient poolKeepAlive(int poolKeepAlive) {
         this.poolKeepAlive = poolKeepAlive;
         return this;
     }
@@ -182,15 +194,4 @@ final class Client extends HalRepresentation {
         return poolKeepAlive;
     }
 
-    @Override
-    public Client self(Link link) {
-        super.self(link);
-        return this;
-    }
-
-    @Override
-    public Client self(String href) {
-        super.self(href);
-        return this;
-    }
 }
