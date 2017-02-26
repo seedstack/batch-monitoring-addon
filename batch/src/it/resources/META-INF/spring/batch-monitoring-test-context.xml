@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2013-2016, The SeedStack authors <http://seedstack.org>
+
+    This Source Code Form is subject to the terms of the Mozilla Public
+    License, v. 2.0. If a copy of the MPL was not distributed with this
+    file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+-->
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:seed="http://www.seedstack.org/xml-schemas/spring-support"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
+       http://www.seedstack.org/xml-schemas/spring-support http://www.seedstack.org/xml-schemas/spring-support/spring-support-1.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd ">
+
+    <seed:datasource id="batchMonitoringDataSource" name="batchMonitoring"/>
+
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="batchMonitoringDataSource"/>
+    </bean>
+
+    <!--  Initialise the database if enabled: -->
+    <jdbc:initialize-database data-source="batchMonitoringDataSource" ignore-failures="DROPS">
+        <jdbc:script location="classpath*:/org/springframework/batch/core/schema-drop-hsqldb.sql"/>
+        <jdbc:script location="classpath*:/org/springframework/batch/core/schema-hsqldb.sql"/>
+        <jdbc:script location="classpath*:/sql/mock-job-instance.sql"/>
+        <jdbc:script location="classpath*:/sql/mock-job-execution.sql"/>
+        <jdbc:script location="classpath*:/sql/mock-job-execution-context.sql"/>
+        <jdbc:script location="classpath*:/sql/mock-job-execution-params.sql"/>
+        <jdbc:script location="classpath*:/sql/mock-step-execution.sql"/>
+        <jdbc:script location="classpath*:/sql/mock-step-execution-context.sql"/>
+    </jdbc:initialize-database>
+</beans>

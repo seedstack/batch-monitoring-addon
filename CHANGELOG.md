@@ -1,3 +1,7 @@
+# Version 3.1.0 (2017-02-27)
+
+* [new] Ability to use a SeedStack datasource for accessing Spring Batch tables.
+
 # Version 3.0.0 (2017-01-13)
 
 * [brk] Update to new configuration system.

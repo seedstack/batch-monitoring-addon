@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2013-2016, The SeedStack authors <http://seedstack.org>
+
+    This Source Code Form is subject to the terms of the Mozilla Public
+    License, v. 2.0. If a copy of the MPL was not distributed with this
+    file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+-->
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:seed="http://www.seedstack.org/xml-schemas/spring-support"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       http://www.seedstack.org/xml-schemas/spring-support http://www.seedstack.org/xml-schemas/spring-support/spring-support-1.2.xsd
+	   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:annotation-config/>
+
+    <seed:configuration id="batchMonitoringDataSourceName" key="monitoring.batch.datasourceName"
+                        default="batchMonitoring"/>
+
+    <seed:datasource id="batchMonitoringDataSource" name="#{@batchMonitoringDataSourceName}"/>
+
+    <bean id="batchMonitoringTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="batchMonitoringDataSource"/>
+    </bean>
+
+    <bean class="org.springframework.batch.core.scope.StepScope"/>
+
+    <bean id="batchMonitoringJobLauncher" class="org.springframework.batch.core.launch.support.SimpleJobLauncher">
+        <property name="jobRepository" ref="batchMonitoringJobRepository"/>
+    </bean>
+
+    <bean id="batchMonitoringJobRepository" class="org.springframework.batch.core.repository.support.JobRepositoryFactoryBean">
+        <property name="dataSource" ref="batchMonitoringDataSource"/>
+        <property name="transactionManager" ref="batchMonitoringTransactionManager"/>
+    </bean>
+
+    <bean id="batchMonitoringJobRegistry" class="org.springframework.batch.core.configuration.support.MapJobRegistry"/>
+
+    <bean id="batchMonitoringJobService" class="org.springframework.batch.admin.service.SimpleJobServiceFactoryBean">
+        <property name="tablePrefix">
+            <seed:configuration key="monitoring.batch.tablePrefix" default="BATCH_"/>
+        </property>
+        <property name="jobRepository" ref="batchMonitoringJobRepository"/>
+        <property name="jobLauncher" ref="batchMonitoringJobLauncher"/>
+        <property name="jobLocator" ref="batchMonitoringJobRegistry"/>
+        <property name="dataSource" ref="batchMonitoringDataSource"/>
+    </bean>
+</beans>
+

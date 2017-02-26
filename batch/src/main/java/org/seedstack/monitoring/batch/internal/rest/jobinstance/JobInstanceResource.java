@@ -41,7 +41,7 @@ public class JobInstanceResource {
      * The job service.
      */
     @Inject
-    @Named("jobService")
+    @Named("batchMonitoringJobService")
     private JobService jobService;
 
     /**

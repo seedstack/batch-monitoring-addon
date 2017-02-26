@@ -34,7 +34,7 @@ import java.util.TimeZone;
 @Path("/seed-monitoring/jobs/executions/{jobExecutionId}/steps")
 public class StepExecutionResource {
     @Inject
-    @Named("jobService")
+    @Named("batchMonitoringJobService")
     private JobService jobService;
 
     /**

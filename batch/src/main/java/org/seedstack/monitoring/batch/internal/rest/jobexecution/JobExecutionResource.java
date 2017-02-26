@@ -36,7 +36,7 @@ import java.util.GregorianCalendar;
 @Path("/seed-monitoring/jobs/{jobName}/job-executions")
 public class JobExecutionResource {
     @Inject
-    @Named("jobService")
+    @Named("batchMonitoringJobService")
     private JobService jobService;
 
     /**
