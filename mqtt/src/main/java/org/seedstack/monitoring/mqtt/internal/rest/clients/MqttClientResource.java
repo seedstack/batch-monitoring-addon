@@ -14,7 +14,7 @@ import com.google.inject.name.Names;
 import org.eclipse.paho.client.mqttv3.IMqttClient;
 import org.seedstack.mqtt.spi.MqttClientInfo;
 import org.seedstack.mqtt.spi.MqttInfo;
-import org.seedstack.mqtt.spi.MqttPoolConfiguration;
+import org.seedstack.mqtt.spi.MqttPoolInfo;
 import org.seedstack.seed.rest.Rel;
 import org.seedstack.seed.rest.RelRegistry;
 import org.seedstack.seed.security.RequiresPermissions;
@@ -121,12 +121,12 @@ public class MqttClientResource {
             representation.topics(clientInfo.getTopicFilters());
         }
 
-        MqttPoolConfiguration poolConf;
-        if ((poolConf = clientInfo.getMqttPoolConfiguration()) != null) {
-            representation.poolCoreSize(poolConf.getCoreSize())
-                    .poolKeepAlive(poolConf.getKeepAlive())
-                    .poolMaxSize(poolConf.getMaxSize())
-                    .poolQueueSize(poolConf.getQueueSize());
+        MqttPoolInfo mqttPoolInfo;
+        if ((mqttPoolInfo = clientInfo.getMqttPoolInfo()) != null) {
+            representation.poolCoreSize(mqttPoolInfo.getCoreSize())
+                    .poolKeepAlive(mqttPoolInfo.getKeepAlive())
+                    .poolMaxSize(mqttPoolInfo.getMaxSize())
+                    .poolQueueSize(mqttPoolInfo.getQueueSize());
         }
         return representation;
     }
