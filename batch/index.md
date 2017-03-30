@@ -4,11 +4,6 @@ parent: "Monitoring"
 weight: -1
 zones:
     - Addons
-tags:
-    - "monitoring"
-    - "batch"
-    - "job"
-    - "spring"
 menu:
     MonitoringAddon:
         weight: 20
