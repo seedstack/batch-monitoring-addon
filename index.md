@@ -5,12 +5,17 @@ author: Aymen ABBES
 description: "Provides self-monitoring Web UI for applications."
 zones:
     - Addons
+tags:
+    - monitoring
 menu:
     MonitoringAddon:
         weight: 10
 ---
 
-The SeedStack monitoring add-on provides modules exposing API which report the monitoring status of your application:
+The SeedStack monitoring add-on provides modules exposing API which report the monitoring status of your application to Web
+clients.<!--more-->
+
+The following modules are available:
 
 * [Batch monitoring module]({{< ref "batch.md" >}}) which reports upon the status of Spring Batch jobs.
 * MQTT monitoring module which reports upon the status of MQTT connections.
