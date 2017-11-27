@@ -1,5 +1,6 @@
 ---
-title: "Monitoring"
+title: "Overview"
+addon: "Monitoring"
 repo: "https://github.com/seedstack/monitoring-addon"
 author: Aymen ABBES
 description: "Provides self-monitoring Web UI for applications."
@@ -8,7 +9,8 @@ zones:
 tags:
     - monitoring
 menu:
-    MonitoringAddon:
+    Monitoring:
+        parent: "contents"
         weight: 10
 ---
 
@@ -20,7 +22,7 @@ The following modules are available:
 * [Batch monitoring module]({{< ref "batch.md" >}}) which reports upon the status of Spring Batch jobs.
 * MQTT monitoring module which reports upon the status of MQTT connections.
 
-# Monitoring UI
+## Monitoring UI
 
 You can write your custom UI or benefit from the built-in W20 UI provided by this add-on. To do so, add the following dependency to
 your Web application:

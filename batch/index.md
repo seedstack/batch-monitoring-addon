@@ -1,11 +1,12 @@
 ---
 title: "Batch monitoring"
-parent: "Monitoring"
+addon: "Monitoring"
 weight: -1
 zones:
     - Addons
 menu:
-    MonitoringAddon:
+    Monitoring:
+        parent: "contents"
         weight: 20
 ---
 
@@ -13,7 +14,7 @@ menu:
 You can use the monitoring add-on batch module to inspect execution results of Spring batch jobs, executions and 
 steps.<!--more-->
  
-# Dependencies 
+## Dependencies 
  
 To add this module in you project add the following dependency to your Web application:
 ||||||| merged common ancestors
@@ -24,7 +25,7 @@ You can use the monitoring add-on batch module to inspect jobs, executions and s
 provided.
 >>>>>>> Stashed changes
 
-# Dependency
+## Dependency
 
 <<<<<<< Updated upstream
 {{% callout info %}}
@@ -43,9 +44,9 @@ If you only need batch monitoring REST APIs, add the following dependency:
 >>>>>>> Stashed changes
 
 <<<<<<< Updated upstream
-# Configuration 
+## Configuration 
 ||||||| merged common ancestors
-# Integration
+## Integration
 =======
 If you also need the W20 Web UI provided by this add-on, add the following dependency instead:
 >>>>>>> Stashed changes
@@ -69,7 +70,7 @@ monitoring:
     # The prefix of Spring Batch metadata tables (defaults to BATCH_)
     tablePrefix: (String)
 ||||||| merged common ancestors
-## Create Spring Batch metadata tables
+### Create Spring Batch metadata tables
 
 If you don't have already existing Spring Batch tables, you can create them with the SQL scripts that are located in
 the **spring-batch-core** JAR inside **org.springframework.batch.core** package.
@@ -81,9 +82,9 @@ The tables *(BATCH _)* prefix can be changed but this requires a change in two p
 * `table.prefix` property within props `[org.seedstack.seed.monitoring.batch.datasource]` section of the Web appplication.
 {{% /callout %}}
 
-## Configure the datasource
+### Configure the datasource
 
-### In a batch module
+#### In a batch module
 
 Each batch module must be configured to write its batch execution information to a specified datasource:
 
@@ -109,7 +110,7 @@ class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
     <property name="dataSource" ref="dataSource" />
 </bean>
 =======
-# Creation of Spring Batch metadata tables
+## Creation of Spring Batch metadata tables
 
 If you don't have already existing Spring Batch tables, you can create them with the SQL scripts that are located in
 the **spring-batch-core** JAR inside **org.springframework.batch.core** package.
@@ -121,9 +122,9 @@ The table `BATCH_` prefix can be changed but this requires a change in two place
 * And the `table.prefix` property within props `[org.seedstack.seed.monitoring.batch.datasource]` section of the Web appplication.
 {{% /callout %}}
 
-## Configure the datasource
+### Configure the datasource
 
-### In a batch module
+#### In a batch module
 
 Each batch module must be configured to write its batch execution information to a specified datasource:
 
@@ -152,7 +153,7 @@ class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 ```
 {{% /config %}}
 
-# Security
+## Security
 
 All batch monitoring REST resources are secured with permissions. These permissions have to be bound to application 
 [roles]({{< ref "docs/core/security.md" >}}) in order to allow access to the user interface. In the configuration
