@@ -42,7 +42,7 @@ monitoring:
 # Security
 
 All batch monitoring REST resources are secured with permissions. These permissions have to be bound to application 
-[roles]({{< ref "docs/seed/manual/security.md" >}}) in order to allow access to the user interface. In the configuration
+[roles]({{< ref "docs/core/security.md" >}}) in order to allow access to the user interface. In the configuration
 file of your web application:
 
 ```yaml
