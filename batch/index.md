@@ -1,11 +1,13 @@
 ---
 title: "Batch monitoring"
-parent: "Monitoring"
+addon: "Monitoring"
+repo: "https://github.com/seedstack/monitoring-addon"
 weight: -1
 zones:
     - Addons
 menu:
-    MonitoringAddon:
+    Monitoring:
+        parent: "contents"
         weight: 20
 ---
 
